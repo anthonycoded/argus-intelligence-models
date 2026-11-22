@@ -1,0 +1,23 @@
+
+{
+  "label": "relevant",
+  "rationale": "The article reports Chinese military and coast guard deployments and exercises around Taiwan and across the western Pacific, including naval formations, simulated attacks, and reported blockade preparations. These developments directly match the topic's military and geographic requirements.",
+  "criteria": {
+    "mandatory_subject": {
+      "assessment": "met",
+      "evidence": "The report describes Chinese military exercises, naval deployments, and coordinated operations involving several theatre commands."
+    },
+    "geography": {
+      "assessment": "met",
+      "evidence": "The reported operations occurred around Taiwan and in surrounding western Pacific waters."
+    },
+    "material_connection": {
+      "assessment": "met",
+      "evidence": "The military activity is directly connected to reported pressure on Taiwan and potential blockade scenarios."
+    },
+    "exclusion": {
+      "assessment": "not_met",
+      "evidence": "The article concerns military operations rather than solely civilian economic or unrelated political developments."
+    }
+  }
+}

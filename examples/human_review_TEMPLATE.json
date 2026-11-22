@@ -1,0 +1,10 @@
+{
+  "label": "relevant",
+  "rationale": "REPLACE with human-written rationale grounded in the real article",
+  "criteria": {
+    "mandatory_subject": {"assessment": "met", "evidence": "REPLACE with evidence from actual article"},
+    "geography": {"assessment": "met", "evidence": "REPLACE with geographic evidence"},
+    "material_connection": {"assessment": "met", "evidence": "REPLACE with factual connection"},
+    "exclusion": {"assessment": "not_met", "evidence": "REPLACE with exclusion assessment"}
+  }
+}
