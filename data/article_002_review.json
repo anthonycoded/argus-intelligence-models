@@ -1,0 +1,23 @@
+
+{
+  "label": "unrelated",
+  "rationale": "The article primarily concerns Chinese disinformation, election interference, and cyber operations targeting Taiwan. Although it mentions Chinese military drills as background context, it does not report a specific military deployment, exercise, or operation meeting the monitored topic's mandatory subject requirement.",
+  "criteria": {
+    "mandatory_subject": {
+      "assessment": "not_met",
+      "evidence": "The central report concerns disinformation campaigns, AI-generated content, election interference, and cyberattacks rather than a specific Chinese military operation."
+    },
+    "geography": {
+      "assessment": "met",
+      "evidence": "The reported influence operations and cyberattacks target Taiwan."
+    },
+    "material_connection": {
+      "assessment": "not_met",
+      "evidence": "The article provides general context about Chinese pressure on Taiwan but no substantive details of a qualifying military operation."
+    },
+    "exclusion": {
+      "assessment": "met",
+      "evidence": "The article's primary subject is political and information influence activity rather than Chinese military deployments or exercises."
+    }
+  }
+}

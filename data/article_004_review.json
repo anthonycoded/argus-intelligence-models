@@ -1,0 +1,23 @@
+
+{
+  "label": "partially_relevant",
+  "rationale": "The article primarily analyzes declining US Navy transits through the Taiwan Strait. It provides substantive historical and strategic context concerning Chinese military exercises, patrols, and coercive activity around Taiwan, but does not primarily report a new Chinese military operation. Under policy aic1-taiwan-v2, the connection is meaningful but the operational-reporting requirement is not fully established.",
+  "criteria": {
+    "mandatory_subject": {
+      "assessment": "met",
+      "evidence": "The article references Chinese military blockade exercises in December 2025, recurring naval operations, and combat patrols around Taiwan."
+    },
+    "geography": {
+      "assessment": "met",
+      "evidence": "The described military operations concern Taiwan and the Taiwan Strait."
+    },
+    "material_connection": {
+      "assessment": "uncertain",
+      "evidence": "Chinese military operations provide substantive context for US transit-frequency analysis, but the article's central development concerns US naval activity."
+    },
+    "exclusion": {
+      "assessment": "not_met",
+      "evidence": "The analysis has a substantive military-security connection and does not fall into an explicit civilian, domestic political, or unrelated-region exclusion."
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "topic_id": "taiwan-military",
+  "policy_version": "aic1-taiwan-v2",
+  "title": "Chinese military activity near Taiwan",
+  "mandatory_subject": "Concrete operations, exercises, deployments, or other military actions attributable to the People's Liberation Army or other Chinese armed forces. Chinese Coast Guard activity counts only when the report documents an operational military connection, rather than assuming all coast guard patrols are military operations.",
+  "geographic_scope": "Taiwan, the Taiwan Strait, and nearby airspace or waters where a direct link to Taiwan's security is established. Do not infer a Taiwan link solely from 'Western Pacific' or 'China'.",
+  "material_connection": "To be relevant, the report must substantively analyze or report qualifying Chinese military activity in scope, with concrete operational details. The activity need not be the headline or primary focus, and may be historical if the article substantively analyzes that operation. Historical activity mentioned only to explain a different current event is contextual, not a fully qualifying current report. Reported plans without a concrete military action may be partly relevant if connected to the topic. Evidence must be attributed to the source; do not treat claims as verified facts.",
+  "exclusions": [
+    "Civilian trade, technology, or economic activity with no direct military operational connection",
+    "Domestic political commentary or information influence operations with no concrete Chinese military operational development",
+    "Military activity in unrelated regions without a demonstrated Taiwan security connection",
+    "Passing or boilerplate references to Chinese drills, vessels, or tensions with no material operational details"
+  ],
+  "labeling_guidance": {
+    "relevant": "The article substantively reports or analyzes a concrete qualifying Chinese military operation, exercise, deployment, or action in geographic scope; mandatory subject, geography, and material connection are met, and no exclusion applies. Headline focus and publication recency do not alone determine the label.",
+    "partially_relevant": "The article has a substantive, clearly explained connection to Chinese military activity near Taiwan but lacks enough evidence to establish at least one required element. Typical cases: relevant US/allied operational response without a qualifying Chinese military development, or historical Chinese military operations serving substantive context rather than the activity being analyzed. State exactly which element is unestablished.",
+    "unrelated": "The article lacks a substantive operational connection, or is covered by an exclusion without meeting the requirements. Mere mentions of Taiwan, China, tensions, historical exercises, or security do not suffice."
+  }
+}

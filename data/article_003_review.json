@@ -1,0 +1,23 @@
+
+{
+  "label": "relevant",
+  "rationale": "Although the article primarily reports the G7 diplomatic response, it also describes Chinese coast guard operations east of Taiwan, potential maritime blockade preparations, and Chinese aircraft carrier drills in the western Pacific. These operational details appear to satisfy the monitored intelligence topic.",
+  "criteria": {
+    "mandatory_subject": {
+      "assessment": "met",
+      "evidence": "The article reports Chinese coast guard patrols and military area-denial exercises involving an aircraft carrier and other naval formations."
+    },
+    "geography": {
+      "assessment": "met",
+      "evidence": "The activities are reported east of Taiwan and in the surrounding western Pacific."
+    },
+    "material_connection": {
+      "assessment": "met",
+      "evidence": "The article connects the reported operations to maritime blockade concerns and security in the Taiwan Strait."
+    },
+    "exclusion": {
+      "assessment": "not_met",
+      "evidence": "Although the central news development is diplomatic, the article provides substantive information about Chinese maritime and military activities."
+    }
+  }
+}

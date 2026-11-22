@@ -1,0 +1,26 @@
+[
+  {
+    "case_id": "article-001",
+    "description": "Chinese naval exercises and deployments around Taiwan are the reported development",
+    "expected_label": "relevant",
+    "reason": "Concrete Chinese operational activity in geographic scope"
+  },
+  {
+    "case_id": "article-002",
+    "description": "Election influence and cyber campaign; military drills only mentioned generically as background",
+    "expected_label": "unrelated",
+    "reason": "No substantive report of qualifying Chinese military activity"
+  },
+  {
+    "case_id": "article-003",
+    "description": "Diplomatic response with specific reporting on Chinese carrier and area-denial drills near Taiwan",
+    "expected_label": "relevant",
+    "reason": "Concrete current Chinese military operations are substantively described despite diplomatic framing"
+  },
+  {
+    "case_id": "article-004",
+    "description": "Analysis of declining US naval transits with historical Chinese drills and patrols as contextual evidence",
+    "expected_label": "partially_relevant",
+    "reason": "Substantive strategic connection, but current analytical subject is US operations and historical Chinese actions are supporting context; review the precise gap"
+  }
+]
