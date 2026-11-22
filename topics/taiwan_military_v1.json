@@ -1,0 +1,18 @@
+{
+  "topic_id": "taiwan-military",
+  "policy_version": "aic1-taiwan-v1",
+  "title": "Chinese military activity near Taiwan",
+  "mandatory_subject": "Operations, exercises, deployments, or military actions attributable to the People's Liberation Army or other Chinese armed forces.",
+  "geographic_scope": "Taiwan, the Taiwan Strait, and nearby airspace or waters when the story directly concerns Taiwan's security.",
+  "material_connection": "The report must describe a concrete activity or development relevant to Chinese military operations in the defined geographic scope, not only mention China and Taiwan.",
+  "exclusions": [
+    "Civilian trade, technology, or economic activity with no direct military operational connection",
+    "Domestic political commentary without a concrete Chinese military activity or development",
+    "Military activity in unrelated regions without a demonstrated connection to Taiwan"
+  ],
+  "labeling_guidance": {
+    "relevant": "Mandatory subject and geographic scope are met, the connection is material, and no exclusion applies.",
+    "partially_relevant": "There is a substantive connection to the topic but at least one required condition is not fully established; record the precise gap.",
+    "unrelated": "No substantive material connection to the topic or the report falls within an exclusion without meeting the requirements."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "record_id": "replace-with-unique-record-id",
+  "event_group_id": "same-for-syndicated-or-related-event-stories",
+  "source_id": "source-registry-id-or-permalink",
+  "collected_at": "2026-11-21T20:00:00Z",
+  "topic": "Intelligence monitoring topic",
+  "subject_spec": "Mandatory subject: ...; Geography: ...; Exclusions: ...; Material connection: ...",
+  "article_title": "Original article headline",
+  "article_text": "Original article text from permitted source",
+  "label": "relevant",
+  "label_source": "human_verified",
+  "rationale": "Explain exactly which rules were met and why",
+  "annotation_version": "v1.0"
+}

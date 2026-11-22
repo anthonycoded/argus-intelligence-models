@@ -1,0 +1,28 @@
+
+project:
+  name: AIC-1
+  version: "0.1.0"
+
+model:
+  name: distilbert/distilbert-base-uncased
+  num_labels: 3
+  max_length: 256
+
+training:
+  device: cpu
+  batch_size: 2
+  gradient_accumulation_steps: 8
+  epochs: 3
+  learning_rate: 0.00002
+  weight_decay: 0.01
+  seed: 42
+
+dataset:
+  train_ratio: 0.70
+  validation_ratio: 0.15
+  test_ratio: 0.15
+
+labels:
+  - unrelated
+  - partially_relevant
+  - relevant

@@ -1,0 +1,21 @@
+{
+  "record_id": "replace-unique-id",
+  "event_group_id": "replace-event-group",
+  "source_id": "replace-source-id",
+  "collected_at": "2026-11-21T20:00:00Z",
+  "topic": "Chinese military activity near Taiwan",
+  "subject_spec": "Mandatory subject: Chinese military operations or deployments; Geography: Taiwan Strait; Exclusions: civilian news lacking military connection; Material connection: direct military activity",
+  "article_title": "REPLACE WITH REAL TITLE",
+  "article_text": "REPLACE WITH REAL SOURCE TEXT",
+  "label": "relevant",
+  "label_source": "human_verified",
+  "rationale": "REPLACE WITH HUMAN REVIEWED RATIONALE",
+  "annotation_version": "v1.1",
+  "annotation_policy_version": "aic1-policy-v1",
+  "criteria": {
+    "mandatory_subject": {"assessment": "met", "evidence": "REPLACE WITH EVIDENCE"},
+    "geography": {"assessment": "met", "evidence": "REPLACE WITH EVIDENCE"},
+    "material_connection": {"assessment": "met", "evidence": "REPLACE WITH EVIDENCE"},
+    "exclusion": {"assessment": "not_met", "evidence": "REPLACE WITH EVIDENCE"}
+  }
+}

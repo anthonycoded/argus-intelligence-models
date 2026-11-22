@@ -1,0 +1,6 @@
+transformers>=4.50,<6
+datasets>=3,<5
+accelerate>=1,<2
+scikit-learn>=1.5,<2
+numpy>=1.26,<3
+pytest>=8,<10

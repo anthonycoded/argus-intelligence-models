@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+.pytest_cache/
+models/
+checkpoints/
+data/labeled/*.jsonl
+data/splits/*.jsonl
+*.log
+.pytest_tmp/
+.pytest_cache/
+__pycache__/
+.venv/
