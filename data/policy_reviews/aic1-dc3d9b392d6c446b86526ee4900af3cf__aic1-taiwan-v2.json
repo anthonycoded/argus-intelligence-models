@@ -1,0 +1,28 @@
+{
+  "criteria": {
+    "exclusion": {
+      "assessment": "not_met",
+      "evidence": "The article contains concrete Chinese military operational reporting and does not fall within any of the topic's defined exclusions."
+    },
+    "geography": {
+      "assessment": "met",
+      "evidence": "The reported activities occur east of Taiwan and in surrounding waters directly connected to Taiwan's security."
+    },
+    "mandatory_subject": {
+      "assessment": "met",
+      "evidence": "The article reports Chinese area-denial drills involving an aircraft carrier and naval formations in the western Pacific."
+    },
+    "material_connection": {
+      "assessment": "met",
+      "evidence": "The article substantively describes Chinese military activities and discusses their connection to potential maritime blockade operations."
+    }
+  },
+  "label": "relevant",
+  "rationale": "Although the article primarily reports a G7 diplomatic declaration, it provides substantive information about Chinese military and maritime operations east of Taiwan. It describes Chinese aircraft carrier and naval formation drills, along with patrols relevant to potential blockade preparations. These concrete operational details satisfy the mandatory subject, geographic scope, and material connection requirements under aic1-taiwan-v2.",
+  "record_id": "aic1-dc3d9b392d6c446b86526ee4900af3cf",
+  "reviewed_at": "2026-11-23T01:08:31.876355+00:00",
+  "reviewed_by": "human-001",
+  "source_policy_version": "aic1-taiwan-v1",
+  "source_record_hash": "f0b8bbfa4386c2488e1efab338d01a746a78a0cc3eafabd4a6ac19091197c70f",
+  "target_policy_version": "aic1-taiwan-v2"
+}

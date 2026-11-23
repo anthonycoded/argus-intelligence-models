@@ -1,0 +1,28 @@
+{
+  "criteria": {
+    "exclusion": {
+      "assessment": "met",
+      "evidence": "The article concerns political information operations without a concrete Chinese military operational connection."
+    },
+    "geography": {
+      "assessment": "met",
+      "evidence": "The reported activities target Taiwan."
+    },
+    "mandatory_subject": {
+      "assessment": "not_met",
+      "evidence": "The central reporting describes disinformation, AI-generated political content, cyberattacks, and attempted election influence rather than Chinese military operations."
+    },
+    "material_connection": {
+      "assessment": "not_met",
+      "evidence": "References to Chinese military pressure provide general background without substantive reporting on a qualifying Chinese military development."
+    }
+  },
+  "label": "unrelated",
+  "rationale": "The article reports alleged Chinese disinformation campaigns, election interference, and cyber operations targeting Taiwan. Although Chinese military drills are mentioned as background context, the article does not substantively report a qualifying Chinese military operation or deployment under aic1-taiwan-v2.",
+  "record_id": "aic1-1999a4ac12bc4272a1f2b6ee37e036e2",
+  "reviewed_at": "2026-11-23T01:07:19.217614+00:00",
+  "reviewed_by": "human-001",
+  "source_policy_version": "aic1-taiwan-v1",
+  "source_record_hash": "a0df94b295996853fc007e1b1835aad5883985c178d57cb3385404f2827b5f0e",
+  "target_policy_version": "aic1-taiwan-v2"
+}

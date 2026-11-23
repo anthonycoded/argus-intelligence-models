@@ -1,0 +1,23 @@
+
+{
+  "label": "relevant",
+  "rationale": "The article reports concrete Chinese military exercises and naval deployments around Taiwan and across the western Pacific. The reported activity includes coordinated naval formations, simulated military attacks, and potential blockade operations. These developments directly satisfy the mandatory subject, geography, and material connection requirements under aic1-taiwan-v2.",
+  "criteria": {
+    "mandatory_subject": {
+      "assessment": "met",
+      "evidence": "Chinese military forces conducted large-scale exercises involving coordinated naval formations and simulated attacks."
+    },
+    "geography": {
+      "assessment": "met",
+      "evidence": "The reported exercises occurred around Taiwan and in nearby western Pacific waters directly connected to Taiwan's security."
+    },
+    "material_connection": {
+      "assessment": "met",
+      "evidence": "The article reports concrete Chinese military operations, including naval deployments and blockade-related exercises."
+    },
+    "exclusion": {
+      "assessment": "not_met",
+      "evidence": "The article concerns qualifying military operations rather than unrelated civilian, political, or regional developments."
+    }
+  }
+}
