@@ -13,6 +13,9 @@ international feed configuration, diverse human-review sampling and a separate
 rights-checked global dataset export. These tools prepare data; no global trainer
 or automatic truth labels are introduced.
 
+[Phase 2O](README_PHASE2O.md) prepares the first real global candidate review batch,
+with source coverage, reproducibility commands and human-review instructions.
+
 ## Windows 11 / Command Prompt
 
 ```bat

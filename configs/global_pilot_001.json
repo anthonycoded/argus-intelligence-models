@@ -1,0 +1,47 @@
+{
+  "feeds": [
+    {
+      "article_hosts": [
+        "www.navy.mil",
+        "navy.mil"
+      ],
+      "enabled": true,
+      "id": "us_navy_news",
+      "language": "en",
+      "publisher": "US Navy",
+      "publisher_country": "US",
+      "source_region": "North America",
+      "url": "https://www.navy.mil/DesktopModules/ArticleCS/RSS.ashx?ContentType=1&Site=1067&max=10",
+      "verification": "operator_verified"
+    },
+    {
+      "article_hosts": [
+        "www.gov.uk",
+        "gov.uk"
+      ],
+      "enabled": true,
+      "id": "uk_government",
+      "language": "en",
+      "publisher": "UK Government",
+      "publisher_country": "GB",
+      "source_region": "Europe",
+      "url": "https://www.gov.uk/search/news-and-communications.atom",
+      "verification": "operator_verified"
+    },
+    {
+      "article_hosts": [
+        "www.sanews.gov.za",
+        "sanews.gov.za"
+      ],
+      "enabled": true,
+      "id": "sa_government_news",
+      "language": "en",
+      "publisher": "SAnews",
+      "publisher_country": "ZA",
+      "source_region": "Africa",
+      "url": "https://www.sanews.gov.za/south-africa-news-stories.xml",
+      "verification": "operator_verified"
+    }
+  ],
+  "schema_version": "aic-global-feeds-v1"
+}
