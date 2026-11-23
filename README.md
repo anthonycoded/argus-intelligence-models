@@ -8,6 +8,11 @@ registers topic-independent source revisions and creates versioned human approva
 Legacy Taiwan relevance remains a separate optional task. Global approvals do not
 automatically clear training rights or pass the existing topic-training manifest.
 
+[Phase 2N](README_PHASE2N.md) adds versioned global multi-query discovery, opt-in
+international feed configuration, diverse human-review sampling and a separate
+rights-checked global dataset export. These tools prepare data; no global trainer
+or automatic truth labels are introduced.
+
 ## Windows 11 / Command Prompt
 
 ```bat

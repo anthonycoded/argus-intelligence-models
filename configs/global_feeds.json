@@ -1,0 +1,33 @@
+{
+  "schema_version": "aic-global-feeds-v1",
+  "feeds": [
+    {
+      "id": "us_navy_news",
+      "enabled": false,
+      "verification": "local_archive",
+      "url": "https://www.navy.mil/DesktopModules/ArticleCS/RSS.ashx?ContentType=1&Site=1067&max=10",
+      "article_hosts": [
+        "www.navy.mil",
+        "navy.mil"
+      ],
+      "publisher": "US Navy",
+      "publisher_country": "US",
+      "source_region": "North America",
+      "language": "en"
+    },
+    {
+      "id": "defense_news",
+      "enabled": false,
+      "verification": "local_archive",
+      "url": "https://www.defensenews.com/global/asia-pacific/feed/",
+      "article_hosts": [
+        "www.defensenews.com",
+        "defensenews.com"
+      ],
+      "publisher": "Defense News",
+      "publisher_country": "US",
+      "source_region": "North America",
+      "language": "en"
+    }
+  ]
+}

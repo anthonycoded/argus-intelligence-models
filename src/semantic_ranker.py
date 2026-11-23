@@ -11,6 +11,7 @@ import math
 import os
 import tempfile
 from pathlib import Path
+from .candidate_import import canonical_source
 
 DEFAULT_MODEL = 'sentence-transformers/all-MiniLM-L6-v2'
 MAX_INPUT_BYTES = 16 * 1024 * 1024
@@ -44,16 +45,18 @@ def read_discoveries(paths: list[Path]) -> tuple[list[dict], dict]:
             sid = row.get('source_id')
             if not isinstance(sid, str) or not sid.strip():
                 raise ValueError('Discovery missing source_id')
-            if sid in seen:
-                stats['duplicates'] += 1
-                continue
-            seen.add(sid)
             title = row.get('article_title')
             if not isinstance(title, str) or not title.strip():
                 stats['missing_title'] += 1
                 continue
             if len(title) > MAX_TITLE_LEN:
                 raise ValueError('Article title too long')
+            sid = canonical_source(sid)
+            if sid in seen:
+                stats['duplicates'] += 1
+                continue
+            seen.add(sid)
+            row = {**row, 'source_id': sid}
             records.append(row)
     return records, stats
 
@@ -133,15 +136,13 @@ def rank(input_paths: list[Path], topic: Path, output: Path, cache_dir: Path,
          model_name: str = DEFAULT_MODEL, *, encoder=None) -> dict:
     if output.exists():
         raise FileExistsError(f'Refusing to overwrite: {output}')
+    if encoder is None:
+        raise ValueError('Legacy topic rank API requires an injected research encoder; use global_discovery with an immutable model revision')
     spec = json.loads(topic.read_text(encoding='utf-8-sig'))
     query = topic_query(spec)
     records, stats = read_discoveries(input_paths)
     if not records:
         raise ValueError('No eligible titled discovery records')
-    if encoder is None:
-        from sentence_transformers import SentenceTransformer
-        model = SentenceTransformer(model_name, device='cpu')
-        encoder = lambda texts: model.encode(texts, normalize_embeddings=True, convert_to_numpy=True, show_progress_bar=False)
     vectors, hits = _encode_with_cache([query] + [r['article_title'].strip() for r in records], model_name, cache_dir, encoder)
     query_vec = vectors[0]
     ranked = []
@@ -164,14 +165,10 @@ def rank(input_paths: list[Path], topic: Path, output: Path, cache_dir: Path,
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description='Offline semantic candidate ranking; review-only, titles only')
-    parser.add_argument('--inputs', nargs='+', required=True, type=Path)
-    parser.add_argument('--topic', default='topics/taiwan_military_v2.json', type=Path)
-    parser.add_argument('--output', required=True, type=Path)
-    parser.add_argument('--cache-dir', default='data/embedding_cache', type=Path)
-    parser.add_argument('--model', default=DEFAULT_MODEL)
-    args = parser.parse_args()
-    print(json.dumps(rank(args.inputs, args.topic, args.output, args.cache_dir, args.model), indent=2))
+    # The historical rank() API remains explicit topic-conditioned research.
+    # The supported CLI defaults to global intelligence and revision-bound caches.
+    from .global_discovery import main as global_main
+    global_main()
 
 
 if __name__ == '__main__':

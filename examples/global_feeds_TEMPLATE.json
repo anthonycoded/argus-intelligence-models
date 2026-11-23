@@ -1,0 +1,31 @@
+{
+  "schema_version": "aic-global-feeds-v1",
+  "feeds": [
+    {
+      "id": "example_kenya",
+      "enabled": false,
+      "verification": "unverified",
+      "url": "https://kenya.example.org/rss",
+      "article_hosts": [
+        "kenya.example.org"
+      ],
+      "publisher": "FICTIONAL CONFIGURATION EXAMPLE - replace and verify",
+      "publisher_country": "KE",
+      "source_region": "Africa",
+      "language": "en"
+    },
+    {
+      "id": "example_brazil",
+      "enabled": false,
+      "verification": "unverified",
+      "url": "https://brazil.example.org/rss",
+      "article_hosts": [
+        "brazil.example.org"
+      ],
+      "publisher": "FICTIONAL CONFIGURATION EXAMPLE - replace and verify",
+      "publisher_country": "BR",
+      "source_region": "South America",
+      "language": "pt"
+    }
+  ]
+}

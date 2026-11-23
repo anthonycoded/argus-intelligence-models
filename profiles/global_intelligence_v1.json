@@ -1,0 +1,329 @@
+{
+  "profile_id": "global-intelligence",
+  "version": "aic-global-discovery-v1",
+  "taxonomy_sha256": "6c895337ac32010109489b1589a51fee3d9d3fae9ee5686d91e7283c9a24acaf",
+  "language_support": [
+    "en"
+  ],
+  "queries": [
+    {
+      "id": "defense-1",
+      "domain": "defense",
+      "event_type": null,
+      "text": "Substantive armed forces, defense policy and military developments in any country.",
+      "keywords": [
+        "military",
+        "defense",
+        "armed forces"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "defense-2",
+      "domain": "defense",
+      "event_type": null,
+      "text": "Military operations, deployments, procurement, readiness and security cooperation worldwide.",
+      "keywords": [
+        "military",
+        "defense",
+        "armed forces"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "economics-1",
+      "domain": "economics",
+      "event_type": null,
+      "text": "Economic policy, trade, markets, production, energy and financial developments worldwide.",
+      "keywords": [
+        "economy",
+        "trade",
+        "inflation",
+        "central bank"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "economics-2",
+      "domain": "economics",
+      "event_type": null,
+      "text": "Central bank decisions, inflation, employment, sanctions and international commerce in any country.",
+      "keywords": [
+        "economy",
+        "trade",
+        "inflation",
+        "central bank"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "geopolitics-1",
+      "domain": "geopolitics",
+      "event_type": null,
+      "text": "Diplomacy, sovereignty, foreign policy and international institutions across all countries.",
+      "keywords": [
+        "diplomacy",
+        "treaty",
+        "foreign policy"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "geopolitics-2",
+      "domain": "geopolitics",
+      "event_type": null,
+      "text": "Treaties, negotiations, diplomatic relations and international political developments.",
+      "keywords": [
+        "diplomacy",
+        "treaty",
+        "foreign policy"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "cybersecurity-1",
+      "domain": "cybersecurity",
+      "event_type": null,
+      "text": "Cyberattacks, vulnerabilities, exploitation and cyber defense in any country or organization.",
+      "keywords": [
+        "ransomware",
+        "cyberattack",
+        "vulnerability",
+        "data breach"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "cybersecurity-2",
+      "domain": "cybersecurity",
+      "event_type": null,
+      "text": "Ransomware, data breaches, malicious cyber operations and computer security incidents.",
+      "keywords": [
+        "ransomware",
+        "cyberattack",
+        "vulnerability",
+        "data breach"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "combat_operation-1",
+      "domain": "defense",
+      "event_type": "combat_operation",
+      "text": "Military forces conduct combat operations or use force.",
+      "keywords": [
+        "combat",
+        "airstrike",
+        "armed conflict"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "combat_operation-2",
+      "domain": "defense",
+      "event_type": "combat_operation",
+      "text": "An armed confrontation or ongoing military combat campaign.",
+      "keywords": [
+        "combat",
+        "airstrike",
+        "armed conflict"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "military_deployment-1",
+      "domain": "defense",
+      "event_type": "military_deployment",
+      "text": "Military forces deploy or reposition to a new operational area.",
+      "keywords": [
+        "deployment",
+        "troops",
+        "warships"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "military_deployment-2",
+      "domain": "defense",
+      "event_type": "military_deployment",
+      "text": "Troops, aircraft or warships change their station or operational posture.",
+      "keywords": [
+        "deployment",
+        "troops",
+        "warships"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "military_exercise-1",
+      "domain": "defense",
+      "event_type": "military_exercise",
+      "text": "Armed forces conduct an organized training exercise.",
+      "keywords": [
+        "exercise",
+        "drills",
+        "training"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "military_exercise-2",
+      "domain": "defense",
+      "event_type": "military_exercise",
+      "text": "Multinational military drills and operational readiness training.",
+      "keywords": [
+        "exercise",
+        "drills",
+        "training"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "weapons_procurement-1",
+      "domain": "defense",
+      "event_type": "weapons_procurement",
+      "text": "A country orders, buys or receives military equipment.",
+      "keywords": [
+        "procurement",
+        "weapons contract",
+        "delivery"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "weapons_procurement-2",
+      "domain": "defense",
+      "event_type": "weapons_procurement",
+      "text": "An evidenced defense acquisition, weapons contract or delivery.",
+      "keywords": [
+        "procurement",
+        "weapons contract",
+        "delivery"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "defense_policy-1",
+      "domain": "defense",
+      "event_type": "defense_policy",
+      "text": "A government changes defense policy, budgets or military doctrine.",
+      "keywords": [
+        "defense budget",
+        "doctrine",
+        "force structure"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "defense_policy-2",
+      "domain": "defense",
+      "event_type": "defense_policy",
+      "text": "Armed forces governance or force structure reforms.",
+      "keywords": [
+        "defense budget",
+        "doctrine",
+        "force structure"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "military_diplomacy-1",
+      "domain": "defense",
+      "event_type": "military_diplomacy",
+      "text": "Countries establish substantive military cooperation or security partnerships.",
+      "keywords": [
+        "defense cooperation",
+        "security partnership"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "military_diplomacy-2",
+      "domain": "defense",
+      "event_type": "military_diplomacy",
+      "text": "Defense negotiations and military cooperation agreements.",
+      "keywords": [
+        "defense cooperation",
+        "security partnership"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "military_technology-1",
+      "domain": "defense",
+      "event_type": "military_technology",
+      "text": "Research, development or trials of military technology.",
+      "keywords": [
+        "prototype",
+        "military technology",
+        "weapons test"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "military_technology-2",
+      "domain": "defense",
+      "event_type": "military_technology",
+      "text": "Testing a new military system or improving technical defense capabilities.",
+      "keywords": [
+        "prototype",
+        "military technology",
+        "weapons test"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "military_intelligence_surveillance-1",
+      "domain": "defense",
+      "event_type": "military_intelligence_surveillance",
+      "text": "Military intelligence, reconnaissance or surveillance activity.",
+      "keywords": [
+        "reconnaissance",
+        "surveillance",
+        "military intelligence"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "military_intelligence_surveillance-2",
+      "domain": "defense",
+      "event_type": "military_intelligence_surveillance",
+      "text": "Operational intelligence collection and military surveillance capabilities.",
+      "keywords": [
+        "reconnaissance",
+        "surveillance",
+        "military intelligence"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "defense_other-1",
+      "domain": "defense",
+      "event_type": "defense_other",
+      "text": "Substantive military readiness, personnel or accident developments.",
+      "keywords": [
+        "military accident",
+        "readiness",
+        "military personnel"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "defense_other-2",
+      "domain": "defense",
+      "event_type": "defense_other",
+      "text": "Armed forces developments outside the named defense event categories.",
+      "keywords": [
+        "military accident",
+        "readiness",
+        "military personnel"
+      ],
+      "language": "en"
+    }
+  ],
+  "scoring": {
+    "aggregation": "max_cosine",
+    "hybrid_semantic_weight": 0.75,
+    "max_sequence_length": 256
+  }
+}

@@ -191,16 +191,10 @@ def collect(feeds: list[dict], *, output: Path, state: Path, feed_dir: Path,
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Fetch government RSS/Atom feeds, prioritize discovery candidates, and remember seen IDs")
-    parser.add_argument("--config", type=Path, default=Path("configs/official_feeds.json"))
-    parser.add_argument("--output", type=Path, required=True, help="New JSONL output path (never overwritten)")
-    parser.add_argument("--state", type=Path, default=Path("data/discovery/feed_seen.json"))
-    parser.add_argument("--feed-dir", type=Path, default=Path("data/incoming/fetched_feeds"))
-    parser.add_argument("--low-sample-pct", type=int, default=25)
-    args = parser.parse_args()
-    feeds = load_config(args.config)
-    print(json.dumps(collect(feeds, output=args.output, state=args.state, feed_dir=args.feed_dir,
-                             low_sample_pct=args.low_sample_pct), indent=2))
+    # Historical collect()/priority() APIs remain available for explicit topic
+    # experiments. Default collection has no topic heuristic or regional filter.
+    from .global_feeds import main as global_main
+    global_main()
 
 
 if __name__ == "__main__":

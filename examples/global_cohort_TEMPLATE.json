@@ -1,0 +1,19 @@
+{
+  "schema_version": "aic-global-cohort-v1",
+  "reviewed_by": "REPLACE-human-reviewer",
+  "reviewed_at": "REPLACE-UTC-timestamp",
+  "confirm_group_review": false,
+  "items": [
+    {
+      "source_ref_id": "REPLACE-global-source-id",
+      "approval_id": "REPLACE-current-global-approval-id",
+      "event_group_ids": [],
+      "duplicate_group_ids": [],
+      "regions": [
+        "unknown"
+      ],
+      "language": "unknown",
+      "sampling": null
+    }
+  ]
+}
