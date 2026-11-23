@@ -1,0 +1,23 @@
+
+{
+  "label": "unrelated",
+  "rationale": "The article describes a multinational anti-submarine warfare exercise involving US, Turkish, Pakistani, and NATO maritime forces. The exercise takes place in the European maritime operating region and does not report Chinese military operations or developments connected to Taiwan's security.",
+  "criteria": {
+    "mandatory_subject": {
+      "assessment": "not_met",
+      "evidence": "The exercise involves the US Navy, Turkish Navy, Pakistani Navy, and NATO forces, without reporting operations attributable to Chinese armed forces."
+    },
+    "geography": {
+      "assessment": "not_met",
+      "evidence": "The exercise concerns Türkiye and the US Sixth Fleet's European maritime operating region, not Taiwan or nearby operational waters."
+    },
+    "material_connection": {
+      "assessment": "not_met",
+      "evidence": "No substantive operational connection to Chinese military activity near Taiwan is established."
+    },
+    "exclusion": {
+      "assessment": "met",
+      "evidence": "The report describes military activity in an unrelated region without a demonstrated connection to Taiwan."
+    }
+  }
+}

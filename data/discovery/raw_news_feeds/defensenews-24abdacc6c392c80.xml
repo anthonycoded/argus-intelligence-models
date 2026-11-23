@@ -1,0 +1,1028 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet media="screen" type="text/xsl" href="/wp-content/themes/smg/assets/xslt/rss-xslt.xml"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	xmlns:media="http://search.yahoo.com/mrss/"
+xmlns:news="http://www.pugpig.com/news"
+>
+
+<channel>
+	<title>Asia Pacific - Defense News</title>
+	<atom:link href="https://www.defensenews.com/global/asia-pacific/feed/" rel="self" type="application/rss+xml" />
+	<link>https://www.defensenews.com/global/asia-pacific/</link>
+	<description>Covering the politics, business and technology of defense &#124; Defense News</description>
+	<lastBuildDate>Fri, 20 Nov 2026 17:54:27 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=7.1.5</generator>
+
+<image>
+	<url>https://one.sightlinemg.com/wp-content/uploads/2026/06/favicon-def.png?w=32</url>
+	<title>Asia Pacific - Defense News</title>
+	<link>https://www.defensenews.com/global/asia-pacific/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">255331545</site><atom:link rel="next" type="application/rss+xml" href="https://www.defensenews.com/global/asia-pacific/feed/?paged=2" />
+	<item>
+		<title>Trump, Xi agreed that military AI decisions should involve humans, Bessent says</title>
+		<link>https://www.defensenews.com/global/asia-pacific/2026/11/20/trump-xi-agreed-that-military-ai-decisions-should-involve-humans-bessent-says/</link>
+		
+		<dc:creator><![CDATA[David Lawder and Doina Chiacu, Reuters]]></dc:creator>
+		<pubDate>Fri, 20 Nov 2026 17:54:27 +0000</pubDate>
+				<category><![CDATA[Asia Pacific]]></category>
+		<category><![CDATA[Daily News Roundup]]></category>
+		<category><![CDATA[Global]]></category>
+		<category><![CDATA[Newsletters]]></category>
+		<category><![CDATA[The Americas]]></category>
+		<category><![CDATA[Ai]]></category>
+		<category><![CDATA[artificial intelligence]]></category>
+		<category><![CDATA[asia]]></category>
+		<category><![CDATA[china]]></category>
+		<category><![CDATA[dn dnr]]></category>
+		<category><![CDATA[Donald Trump]]></category>
+		<category><![CDATA[military]]></category>
+		<category><![CDATA[Pacific]]></category>
+		<category><![CDATA[Pentagon]]></category>
+		<category><![CDATA[Scott Bessent]]></category>
+		<category><![CDATA[SI]]></category>
+		<category><![CDATA[super intelligence]]></category>
+		<category><![CDATA[Xi Jinping]]></category>
+		<guid isPermaLink="false"></guid>
+
+					<description><![CDATA[The agreement was among the major achievements of Trump's trip to Asia, Treasury Secretary Scott Bessent said.]]></description>
+		
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">88192</post-id><media:thumbnail url="https://one.sightlinemg.com/wp-content/uploads/2026/11/2026-11-20T165058Z_2_LYNXNPEMAJ1EE_RTROPTP_4_APEC-SUMMIT-TRUMP.jpg" width="6000" height="4000" type="image/jpeg" />
+<media:content medium="image" url="https://one.sightlinemg.com/wp-content/uploads/2026/11/2026-11-20T165058Z_2_LYNXNPEMAJ1EE_RTROPTP_4_APEC-SUMMIT-TRUMP.jpg" width="6000" height="4000" type="image/jpeg" />
+<news:push>0</news:push>
+<content:encoded><![CDATA[
+<p class="wp-block-paragraph">President Donald Trump and Chinese President Xi Jinping agreed humans should always be involved in <a href="https://www.militarytimes.com/news/your-military/2026/09/16/ai-military-targeting-may-move-faster-than-humans-can-authenticate-critics-warn/">military decisions</a> that use <a href="https://www.militarytimes.com/industry/techwatch/2026/07/17/let-the-ai-do-it-former-air-force-secretary-pits-machine-against-human-operators/">artificial intelligence</a> technologies, even as the two countries <a href="https://www.militarytimes.com/news/your-military/2026/11/18/us-surges-power-projection-to-westernmost-island-chain-as-russia-china-loom/">compete for AI supremacy</a>, Treasury Secretary Scott Bessent said on Friday.</p>
+
+
+
+<p class="wp-block-paragraph">Bessent told CNBC after returning from Trump&#8217;s meeting with Xi in Shenzhen, China, that the agreement was among the major achievements of Trump&#8217;s trip to Asia.</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;I think it was very important that President Trump and President Xi agreed that humans should always be involved in any military decisions that SI makes, and the SI should not be allowed to be autonomous for major military actions,&#8221; Bessent said, referring to the Trump administration&#8217;s preferred term for the technology, &#8220;super intelligence.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">Bessent said that the U.S.-China agreement on military use of the technology, requiring human involvement and other safeguards, would not be affected by the two countries&#8217; competition for AI supremacy. He added that U.S. AI labs needed to maintain their technological lead as the best defense against &#8220;dangerous&#8221; Chinese AI models that are being used in cyberattacks.</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;But there&#8217;s nothing to do with competition when it says that both sides agree that no major military operation should be launched without a human being involved,&#8221; Bessent said.</p>
+
+
+
+<p class="wp-block-paragraph">He said that the spying allegations involving former Nvidia CEO Jensen Huang and a Chinese national that he was romantically involved with did not come up in the Trump-Xi bilateral meeting.</p>
+
+
+
+<p class="wp-block-paragraph">Bessent said that Nvidia&#8217;s second-tier AI chip, the H200, remained the most advanced chip that China could purchase with licenses, after Trump took what he called a &#8220;very firm line.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;I think what we have seen is a paucity of orders from the Chinese on the H200s as they try to build out their own chip stack, and I think that they are probably many years behind,&#8221; he added.</p>
+
+
+
+<p class="wp-block-paragraph">Bessent downplayed differences that he had voiced between the views of Treasury and Commerce Secretary Howard Lutnick on AI chip restrictions in the wake of the Nvidia scandal, saying Trump administration officials were &#8220;all committed to following President Trump&#8217;s instructions.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">The Commerce Department took steps on Monday to further restrict China&#8217;s access to advanced AI chips, including those used by overseas data centers where Chinese entities can rent computing power.</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;I think we are going to see that the proper chip restrictions are in place, and the remote access has been curtailed,&#8221; he said.</p>
+
+
+
+<p class="wp-block-paragraph"></p>
+]]></content:encoded>
+	</item>
+		<item>
+		<title>Japanese nuclear submarines are a bad idea for East China Sea security — for now</title>
+		<link>https://www.defensenews.com/opinion/2026/11/19/japanese-nuclear-submarines-are-a-bad-idea-for-east-china-sea-security-for-now/</link>
+		
+		<dc:creator><![CDATA[Lyle Goldstein]]></dc:creator>
+		<pubDate>Thu, 19 Nov 2026 09:36:51 +0000</pubDate>
+				<category><![CDATA[Asia Pacific]]></category>
+		<category><![CDATA[Daily News Roundup]]></category>
+		<category><![CDATA[Global]]></category>
+		<category><![CDATA[News]]></category>
+		<category><![CDATA[Newsletters]]></category>
+		<category><![CDATA[Opinion]]></category>
+		<category><![CDATA[china]]></category>
+		<category><![CDATA[commentary]]></category>
+		<category><![CDATA[dn dnr]]></category>
+		<category><![CDATA[East China Sea]]></category>
+		<category><![CDATA[japan]]></category>
+		<category><![CDATA[nuclear submarines]]></category>
+		<category><![CDATA[opinion]]></category>
+		<guid isPermaLink="false"></guid>
+
+					<description><![CDATA[Washington must rein in Tokyo’s ambitions for nuclear submarines, even as it encourages Japan to further develop defensive capabilities, writes analyst Lyle Goldstein.]]></description>
+		
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">88105</post-id><media:thumbnail url="https://one.sightlinemg.com/wp-content/uploads/2026/11/GettyImages-1244543361.jpg" width="5500" height="3678" type="image/jpeg" />
+<media:content medium="image" url="https://one.sightlinemg.com/wp-content/uploads/2026/11/GettyImages-1244543361.jpg" width="5500" height="3678" type="image/jpeg" />
+<news:push>0</news:push>
+<content:encoded><![CDATA[
+<p class="wp-block-paragraph">Japan faces a difficult security environment. Relations with the rising superpower next door, <a href="https://www.defensenews.com/global/asia-pacific/2026/11/16/china-has-normalized-naval-presence-near-japan-since-political-spat-of-2025/">namely China</a>, are extremely tense at present and for the last year. Japan must also contend with a hostile Russia and North Korea as well. All three of these countries possess nuclear weapons and are actively adding to those arsenals. If that wasn’t enough, the second Trump administration has been distracted by the Middle East and also demonstrated a relatively carefree approach to traditional U.S. allies.</p>
+
+
+
+<p class="wp-block-paragraph">No wonder that nuclear talk is now fashionable among defense analysts in Tokyo.</p>
+
+
+
+<p class="wp-block-paragraph">Indeed, Japan has good reasons to take its defense more seriously and has set about doing so. For decades, Tokyo restricted itself to spending about 1% of GDP on defense, but that self-imposed restriction fell away in recent years. Today, serious calculations are underway regarding whether or not Japan should follow other middle powers like Australia and South Korea by creating a nuclear submarine program. While the idea is not without merit, Japanese and American strategists need to consider the wider consequences before stepping out on this new initiative.</p>
+
+
+
+<p class="wp-block-paragraph">In early November, the Chinese newspaper Global Times published an editorial revealing that China’s rather predictable reaction to any Japanese plan to build a nuclear submarine force would be extremely harsh. The editorial suggests that Japanese Defense Minister Shinjiro Koizumi has “become obsessed” with acquiring nuclear submarines. The Chinese article is sharply critical of the initiative, explaining that it represents a “sleight of hand intended to bypass scrutiny.” It explains: “The fuel cycle, the reprocessing of spent nuclear fuel, and the management of nuclear materials associated with nuclear-powered submarines overlap significantly with the development path for nuclear weapons.”</p>
+
+
+
+<p class="wp-block-paragraph">This Chinese perspective interprets Japan’s strategy as follows: Acquire the submarines first, then obtain nuclear weapons — presumably following a secret roadmap by “right-wing factions.”</p>
+
+
+
+<p class="wp-block-paragraph">The same editorial also had harsh words for the United States, asserting, “The United States is well aware of this, yet it has long chosen to turn a blind eye.” According to this rendering, Washington leaders “seek to arm Japan, transforming it into a forward-deployed spearhead in East Asia and forcing it to shoulder a greater share of the costs of confrontation.”</p>
+
+
+
+<p class="wp-block-paragraph">The piece concludes that U.S. policy is “shortsighted and arrogant … [as it] gambles with the post-war international order and the nuclear non-proliferation regime, effectively allowing a dangerous ‘Pandora’s box’ to be pried open.”</p>
+
+
+
+<p class="wp-block-paragraph">The shrill tone of this editorial is worthy of note. China-Japan relations have entered a genuine crisis stage during the last year and Washington must be cognizant of the perilous escalatory dynamics, since it could unfortunately be dragged into an unwanted war between the two contending East Asian powers.</p>
+
+
+
+<p class="wp-block-paragraph">To be sure, there are reasons why Japanese nuclear submarines merit closer analysis. Not only is the Chinese Navy’s rapid growth altering the Asia-Pacific military balance, but Japan could quite seamlessly integrate into the existing AUKUS program, a Biden administration initiative from 2021 that unites America together with Australia and the U.K. to focus on jointly fabricating nuclear submarines.</p>
+
+
+
+<p class="wp-block-paragraph">Unquestionably, Tokyo does possess the requisite trained workforce and industrial capabilities to make such a force feasible, even in the near future. Nuclear submarines remain as a formidable naval weapons system – for sure. Finally, if the development of nuclear submarines can preclude the creation of Japanese nuclear weapons, that could perhaps form a sensible political compromise in this age of increasing insecurity.</p>
+
+
+
+<p class="wp-block-paragraph">At present, however, the counterarguments remain more compelling. Such a step by Tokyo would undoubtedly kick up a political firestorm both in the international community and most likely within Japan itself too. The Chinese editorial may be correct that opening “Pandora’s Box” and this route to nuclear weapons proliferation could initiate the much feared “nuclear cascade,” since many other countries may wish to go the same direction.</p>
+
+
+
+<p class="wp-block-paragraph">It’s also important to recognize that Japan already wields a very potent undersea force with some of the most advanced air-independent propulsion (AIP) diesel submarines in the world. True, nuclear submarines are generally larger and could carry a spate of new offensive weapons systems, such as land-attack missiles. But that would change the character of the Japanese Maritime Self-defense Force into a more offensive striking element, as opposed to a defensive force. A nuclear submarine fleet and associated offensive munitions (e.g. land-attack missiles) would soak up scarce resources for Japan’s crucial defensively-oriented, conventional forces and, moreover, much of the East Asian littoral has shallow waters that are not so amenable to larger nuclear submarines anyhow.</p>
+
+
+
+<p class="wp-block-paragraph">Most consequential, however, would be the obviously deleterious impact that this development would entail for China-Japan relations, as the above editorial makes clear. The sad but important reality of contemporary China-Japan relations is that this enmity is less based on divergent interests or aggressive intentions. Instead, the present hostility arises from dangerous, emotive historical grievances.</p>
+
+
+
+<p class="wp-block-paragraph">America cannot allow such unrequited nationalist impulses on either side of the East China Sea to escalate into a gravely hazardous “spiral model” of conflict. Therefore, Washington must reign in Tokyo’s ambitions for nuclear submarines, even as it encourages Japan to further develop defensive capabilities, such as air defenses, mine countermeasures, and base hardening consistent with the military lessons from the recent wars in the Persian Gulf and Eastern Europe.</p>
+
+
+
+<p class="wp-block-paragraph"><em>Lyle Goldstein is director of the China Initiative at Brown University’s Watson School and concurrently serves as director of the Asia Program at the think-tank Defense Priorities.</em></p>
+]]></content:encoded>
+	</item>
+		<item>
+		<title>US surges power projection to westernmost island chain as Russia, China loom</title>
+		<link>https://www.defensenews.com/global/the-americas/2026/11/18/us-surges-power-projection-to-westernmost-island-chain-as-russia-china-loom/</link>
+		
+		<dc:creator><![CDATA[Christopher Woody]]></dc:creator>
+		<pubDate>Wed, 18 Nov 2026 22:40:38 +0000</pubDate>
+				<category><![CDATA[Asia Pacific]]></category>
+		<category><![CDATA[Daily News Roundup]]></category>
+		<category><![CDATA[Europe]]></category>
+		<category><![CDATA[Global]]></category>
+		<category><![CDATA[Newsletters]]></category>
+		<category><![CDATA[The Americas]]></category>
+		<category><![CDATA[Agile Combat Employment]]></category>
+		<category><![CDATA[Air Force]]></category>
+		<category><![CDATA[Alaska]]></category>
+		<category><![CDATA[Aleutian Islands]]></category>
+		<category><![CDATA[Arctic]]></category>
+		<category><![CDATA[Canada]]></category>
+		<category><![CDATA[china]]></category>
+		<category><![CDATA[Cobra Dane]]></category>
+		<category><![CDATA[dn dnr]]></category>
+		<category><![CDATA[Eareckson Air Station]]></category>
+		<category><![CDATA[Eilson Air Force Base]]></category>
+		<category><![CDATA[f-16]]></category>
+		<category><![CDATA[F-35]]></category>
+		<category><![CDATA[guam]]></category>
+		<category><![CDATA[HIMARS]]></category>
+		<category><![CDATA[NORAD]]></category>
+		<category><![CDATA[North Field]]></category>
+		<category><![CDATA[Northern Marina Islands]]></category>
+		<category><![CDATA[Pacific]]></category>
+		<category><![CDATA[russia]]></category>
+		<category><![CDATA[Shemya Island]]></category>
+		<category><![CDATA[Soviet]]></category>
+		<category><![CDATA[Stimson Center]]></category>
+		<guid isPermaLink="false"></guid>
+
+					<description><![CDATA[The U.S. Air Force is expanding its training on America's westernmost islands, where it can project power and monitor adversaries across the Pacific and the Arctic.]]></description>
+		
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">88103</post-id><media:thumbnail url="https://one.sightlinemg.com/wp-content/uploads/2026/11/10058898.jpg" width="5472" height="3648" type="image/jpeg" />
+<media:content medium="image" url="https://one.sightlinemg.com/wp-content/uploads/2026/11/10058898.jpg" width="5472" height="3648" type="image/jpeg" />
+<news:push>0</news:push>
+<content:encoded><![CDATA[
+<p class="wp-block-paragraph">The U.S. Air Force is stepping up its training on the country&#8217;s westernmost islands as it seeks to develop more places from which to project power and monitor adversaries across the Pacific and the Arctic.</p>
+
+
+
+<p class="wp-block-paragraph">Those efforts were visible in late October, when airmen deployed to Shemya Island in Alaska’s Aleutian Islands for a rare exercise, and when the Air Force released <a href="https://www.defensenews.com/global/asia-pacific/2026/11/06/us-air-force-eyes-reviving-wwii-air-bases-in-the-pacific/">a proposal outlining its plans for operations</a> on islands near Guam.</p>
+
+
+
+<p class="wp-block-paragraph">On Shemya, which is closer to Russia than to <a href="https://www.defensenews.com/land/2026/10/13/with-the-cold-breed-for-soldiers-of-the-11th-airborne-division-winter-is-always-coming/">mainland Alaska</a>, F-16s, tankers and cargo planes deployed to Eareckson Air Station from Oct. 18 to Oct. 26. While there, the jets “sat alert,” with crews in position and maintaining readiness to launch on short notice. </p>
+
+
+
+<p class="wp-block-paragraph">“While it was commonplace for aircraft to sit alert in the 1980s, this deployment marks the first time in decades that aircraft have sat alert at Eareckson,” Capt. Kitsana Dounglomchan, Alaskan NORAD Region spokesperson, said in an email.</p>
+
+
+
+<p class="wp-block-paragraph">The Shemya deployment ended with long-range operations as part of a U.S.-Canada homeland-defense exercise. As F-16s launched from Eareckson to cover the southern portion of the Alaska theater of operations, F-35s and F-16s at Eielson Air Force Base 1,600 miles to the west took off to cover the northwest portion of the theater. Canadian CF-18s flew from their base at Cold Lake, 2,600 miles from Shemya, to cover the northern part.</p>
+
+
+
+<p class="wp-block-paragraph">Operating from Eareckson “proved we can deploy to an austere location, maintain alert, launch on short notice, and seamlessly integrate U.S. and Canadian forces to defend the northern approaches,” Air Force Lt. Gen. Robert Davis, commander of the Alaskan NORAD region, said in a press release.</p>
+
+
+
+<p class="wp-block-paragraph">The U.S. military has been active on Shemya since World War II. During the Cold War, the base hosted refueling and surveillance aircraft as well as radars to monitor Soviet activity, especially Soviet ICBMs. The massive Cobra Dane radar was built there in the 1970s and is still used to monitor missile activity.</p>
+
+
+
+<p class="wp-block-paragraph">Recent deployments to Shemya underscore its continued relevance as a perch in the Aleutians, which stretch <a href="https://thedateline.substack.com/p/us-looks-at-reopening-adak-base-in-alaska-amid-russia-china-arctic-tension">across strategically important waters</a> linking the Pacific and Arctic. A “<a href="https://www.armytimes.com/news/your-army/2024/09/18/army-deploys-to-alaska-island-amid-rise-in-russian-military-activity/">force projection operation</a>” by U.S. soldiers with HIMARS launchers in September 2024 came after <a href="https://thedateline.substack.com/p/russia-and-china-are-getting-busy">a flurry of Russian and Chinese activity</a> in the area, including the first Sino-Russian bomber patrol near Alaska. Other recent <a href="https://x.com/USNorthernCmd/status/1450147675576274945">exercises</a> appear to have focused on defending the island’s infrastructure from seaborne incursions and aerial attacks.</p>
+
+
+
+<p class="wp-block-paragraph">While at Eareckson, airmen also certified the base’s aircraft-arresting system to handle F-16s, “further validating Eareckson Air Station as a viable location for future fighter operations from an austere airfield,” according to a press release. Dounglomchan declined to comment on future operations at Eareckson but said NORAD maintains “the operational capability” to move forces around Alaska and the Arctic “at a time and place of our choosing” and “oftentimes to remote locations like Eareckson.”</p>
+
+
+
+<p class="wp-block-paragraph">As the drills on Shemya wrapped up, the Air Force shared its plans for future operations on islands in the central Pacific. In a proposal released at the end of October, the service said it would study the impact of conducting up to 1,500 and potentially more than 1,800 aircraft operations, such as takeoffs and landings, annually at airfields on Rota, Saipan, and Tinian in the Commonwealth of the Northern Mariana Islands.</p>
+
+
+
+<p class="wp-block-paragraph">The operations would be part of small, medium and large drills held several times a year for a few weeks at a time. They would also involve deployment of up to 550,000 gallons of fuel and up to 1,000 personnel at each airfield, as well as munitions, temporary infrastructure, and support operations. The Air Force said its study would assess “the potential social, economic, and environmental effects” of those operations.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" src="https://one.sightlinemg.com/wp-content/uploads/2026/11/10058857.jpg" alt="" class="wp-image-122601" /><figcaption class="wp-element-caption">HC-130J Combat King II pilots assigned to the 211th Rescue Squadron pilot an aircraft en route from Joint Base Elmendorf-Richardson to Eareckson Air Station, Alaska, on Oct. 19, 2026. (Airman 1st Class Frank Houseton/U.S. Air Force)</figcaption></figure>
+
+
+
+<p class="wp-block-paragraph">The study won’t be completed until mid-2028, but the proposal highlights the Air Force’s recent focus on those islands, especially Tinian, where airmen are <a href="https://thedateline.substack.com/p/new-bases-stretch-the-us-air-forces">refurbishing North Field</a>, one of the U.S.’s largest and most important WWII airbases. North Field was abandoned and overgrown after the war, but airmen have been clearing vegetation, removing debris and rehabilitating runways since late 2023.</p>
+
+
+
+<p class="wp-block-paragraph"> That work is <a href="https://www.dvidshub.net/news/577202/multi-state-red-horse-units-fortify-pacific-airfields-advance-agile-combat-employment">ongoing</a> but had progressed enough by mid-2025 for North Field to be <a href="https://www.maxwell.af.mil/News/Display/Article/4202270/may-doctrine-paragon-tinian/">deemed</a> “a semi-permanent [contingency] location” for the Air Force’s main base on Guam, about 100 miles to the south.</p>
+
+
+
+<p class="wp-block-paragraph">The Northern Marianas is a U.S. territory in the Second Island Chain, which stretches from Japan through the central Pacific to Indonesia. The Air Force has been <a href="https://thedateline.substack.com/p/the-us-air-force-is-scouting-rival">scouting airfields</a> in that island chain and <a href="https://www.defensenews.com/interviews/2024/01/08/us-air-force-logistics-officer-talks-basing-drones-in-the-pacific/">conducting renovations and upgrades</a> to make them better able to support its Agile Combat Employment concept, which emphasizes dispersal and resilience to counter the threat from China.</p>
+
+
+
+<p class="wp-block-paragraph">“China’s missile force is large, but it’s not unlimited. Every additional airfield from where the Air Force can operate is another of targets China has to cover. That’s the logic behind Agile Combat Employment,” said Kelly Greico, a senior fellow at the Stimson Center.</p>
+
+
+
+<p class="wp-block-paragraph">Improvements on Shemya and in the Northern Marianas enhance the Air Force’s ability to operate in those places, but those operations are influenced by the islands’ locations, according to Greico, whose research focuses on airpower strategy.</p>
+
+
+
+<p class="wp-block-paragraph">Shemya “is primarily about homeland defense. Its location in the North Pacific makes it useful mainly as a forward operating location for NORAD,” Greico said. “The value of the remote airfield lies less in its ability to generate sorties under contested conditions than in its geographic position in intercepting Russian aircraft forward.”</p>
+
+
+
+<p class="wp-block-paragraph">But investments in Rota, Tinian, and Saipan, Greico added, “are primarily about expanding the number of locations from which the Air Force could operate, reducing its dependence on Andersen Air Base at Guam.”</p>
+
+
+
+<p class="wp-block-paragraph">Both Shemya and the Northern Marianas provide the benefit of being U.S. territory, giving the Pentagon greater freedom to operate. Bases in the Philippines and Japan are closer to China, but those countries have more control over what U.S. forces do at their facilities and <a href="https://thedateline.substack.com/p/nmesis-missiles-in-the-philippines-south-china-sea-taiwan-deterrence#:~:text=be%20logistical%20and-,political%20hurdles,-to%20getting%20forces">may limit their access</a> and operations during a crisis or conflict.</p>
+
+
+
+<p class="wp-block-paragraph">Geography tempers those political benefits, however. In the <a href="https://www.defensenews.com/opinion/2024/12/17/no-runways-no-sorties-chinese-missiles-threaten-us-airpower-plans/">Stimson Center&#8217;s modeling</a>, dispersal had “the biggest effect of any countermeasure we tested,” Greico said. “But the effect is much smaller in the Second Island Chain than in Japan, because there just aren’t many runways out there.”</p>
+
+
+
+<p class="wp-block-paragraph">“Chinese missile strikes could keep U.S. runways in Guam and other Pacific islands closed to tankers and bombers for about four days. Adding civilian airfields in Guam, the Northern Marianas, and Palau only reduced those times by a matter of hours,” Greico added. “Geography matters here. There’s a lot of water out there, but not much land.”</p>
+]]></content:encoded>
+	</item>
+		<item>
+		<title>New pact positions the Philippines as a defense hub for Australian troops</title>
+		<link>https://www.defensenews.com/global/asia-pacific/2026/11/17/new-pact-positions-the-philippines-as-a-defense-hub-for-australian-troops/</link>
+		
+		<dc:creator><![CDATA[Leilani Chavez]]></dc:creator>
+		<pubDate>Tue, 17 Nov 2026 11:29:34 +0000</pubDate>
+				<category><![CDATA[Asia Pacific]]></category>
+		<category><![CDATA[Daily News Roundup]]></category>
+		<category><![CDATA[Global]]></category>
+		<category><![CDATA[News]]></category>
+		<category><![CDATA[Newsletters]]></category>
+		<category><![CDATA[Training & Sim]]></category>
+		<category><![CDATA[australia]]></category>
+		<category><![CDATA[basing agreement]]></category>
+		<category><![CDATA[china]]></category>
+		<category><![CDATA[dn dnr]]></category>
+		<category><![CDATA[military cooperation]]></category>
+		<category><![CDATA[philippines]]></category>
+		<category><![CDATA[training]]></category>
+		<guid isPermaLink="false"></guid>
+
+					<description><![CDATA[Top officials from Australia and the Philippines have inked a defense pact to accelerate military coordination, paving the way for rotational troop deployment and Australian investments in Philippine military infrastructure.]]></description>
+		
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">88009</post-id><media:thumbnail url="https://one.sightlinemg.com/wp-content/uploads/2026/11/GettyImages-2272845376.jpg" width="2000" height="1334" type="image/jpeg" />
+<media:content medium="image" url="https://one.sightlinemg.com/wp-content/uploads/2026/11/GettyImages-2272845376.jpg" width="2000" height="1334" type="image/jpeg" />
+<news:push>0</news:push>
+<content:encoded><![CDATA[
+<p class="wp-block-paragraph">MANILA, Philippines — Top officials from Australia and the Philippines have inked a defense pact to accelerate military coordination, paving the way for rotational troop deployment and Australian investments in Philippine military infrastructure.</p>
+
+
+
+<p class="wp-block-paragraph">The Nov. 15 Defense Cooperation Agreement, or DCA, is designed to cut administrative bottlenecks and create a more efficient coordination system to fast-track bilateral defense activities.</p>
+
+
+
+<p class="wp-block-paragraph">So far the two countries&#8217; military exchanges have largely fallen under a 1995 memorandum of agreement, while troop exchanges were guided by the Status of Visiting Forces Agreement, signed in 2007 and effective since 2012.</p>
+
+
+
+<p class="wp-block-paragraph">According to Australia&#8217;s Department of Defence, the new pact covers intelligence-sharing, military training, the transfer of aerial and surface drones, maritime activities, and military infrastructure.</p>
+
+
+
+<p class="wp-block-paragraph">“This new Defence Cooperation Arrangement will deepen practical cooperation between our defense forces and create new opportunities to work together in support of regional security,&#8221; Deputy Prime Minister Richard Marles said in a statement.</p>
+
+
+
+<p class="wp-block-paragraph">Philippine Defense Secretary Gilberto Teodoro Jr. said the new DCA reduces bureaucratic barriers, particularly in troop deployment, and would allow Australia to rapidly deploy troops to aid in Philippine disaster response.</p>
+
+
+
+<p class="wp-block-paragraph">“Rather than 100 steps to do a single thing, it will just now take 10 … and it will be more purposeful and not ad hoc,” Teodoro told reporters following the signing.</p>
+
+
+
+<p class="wp-block-paragraph">The move comes as Australia recalibrates its defense posture in response to China&#8217;s expanding military capabilities, growing missile reach, and increasing use of gray-zone tactics and economic coercion in the Indo-Pacific.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" src="https://one.sightlinemg.com/wp-content/uploads/2026/11/GettyImages-2304898468.jpg?w=1024" alt="" class="wp-image-122570" /><figcaption class="wp-element-caption">Philippine President Ferdinand Marcos Jr. (C) and First Lady Louise Araneta-Marcos (R) welcome Australia&#8217;s Prime Minister Anthony Albanese ahead of the Gala Dinner during the 49th Association of Southeast Asian Nations (ASEAN) Summit in Manila on Nov. 16, 2026. (Nhac Nguyen / POOL / AFP via Getty Images)</figcaption></figure>
+
+
+
+<p class="wp-block-paragraph">“From Australia&#8217;s point of view, the Philippines is our first line of defense,” Australian Strategic Policy Institute senior fellow Euan Graham told Defense News.</p>
+
+
+
+<p class="wp-block-paragraph">Australia has experienced harassment by PLA forces, including dangerous maritime maneuvers, laser targeting in its northern exclusive economic zone, and the use of sonar and flares in close proximity to Royal Australian Navy vessels.</p>
+
+
+
+<p class="wp-block-paragraph">Like Australia, the Philippines faces Chinese pressure head-on. Chinese ships have used high-powered water cannons, pointed military-grade lasers, rammed, and attacked Armed Forces of the Philippines vessels and personnel.</p>
+
+
+
+<p class="wp-block-paragraph">When asked if the DCA was meant to boost deterrence in the Taiwan Strait, Teodoro emphasized the agreement will bolster “deterrence in the West Philippine Sea” and in “Philippine territory.”</p>
+
+
+
+<h3 id="h-strategy-shift" class="wp-block-heading">Strategy shift</h3>
+
+
+
+<p class="wp-block-paragraph">Australia marked a historic peacetime shift toward a strategy of denial in 2023, most recently codified in the 2026 national defense strategy.</p>
+
+
+
+<p class="wp-block-paragraph">The idea is to reshape the Australian Defense Force into an integrated, focused military capable of deterring and denying access to its northern approaches, which includes deploying a forward-defense force.</p>
+
+
+
+<p class="wp-block-paragraph">Earlier this year, Australia created the new Littoral Maneuver Group under the 18th Sustainment Brigade headquartered in Brisbane, to operate farther north, making the Philippines an important part of that strategy.</p>
+
+
+
+<p class="wp-block-paragraph">But Australia can only deploy small units, analyst Graham cautioned. And keeping these mobile forces supplied and operational in archipelagic countries like the Philippines is challenging, as troops and equipment are moved across widely dispersed islands during operations.</p>
+
+
+
+<h3 id="h-building-logistics-networks" class="wp-block-heading">Building logistics networks</h3>
+
+
+
+<p class="wp-block-paragraph">To that end, the new cooperation agreement is expected to facilitate discussions on potential Australian investments in Philippine military infrastructure.</p>
+
+
+
+<p class="wp-block-paragraph">A list of five Luzon <a href="https://www.defensenews.com/global/asia-pacific/2025/07/02/filipino-military-pushes-naval-base-upgrades-fearing-chinese-spying/">bases</a> slated to receive funding for eight infrastructure projects was expected to be finalized around August this year. However, only one base has been discussed in detail so far, officials told Defense News.</p>
+
+
+
+<p class="wp-block-paragraph">Teodoro previously clarified that base agreements with Australia will follow a different model than the Enhanced Defense Cooperation Agreement (EDCA) between the Philippines and the United States, which includes provisions for prepositioning military equipment and assets.</p>
+
+
+
+<p class="wp-block-paragraph">The Australian “basing” arrangements, officials said, would include areas that are not traditional bases.</p>
+
+
+
+<p class="wp-block-paragraph">Rather than a large basing presence, what the Australian military needs is access to locations that could sustain its forces during operations and contingencies.</p>
+
+
+
+<p class="wp-block-paragraph">Discussions so far have included sustainment and logistics to support joint operations while troops spread across the archipelago&#8217;s most complex, most challenging, and remote terrains.</p>
+
+
+
+<p class="wp-block-paragraph">Graham said Australia&#8217;s role in the Philippines is distinct but complementary to that of the United States. While physical locations could overlap, the infrastructure projects would be different.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Canberra and Manila in 2021 signed the Mutual Support Logistics Arrangement, which covers fuel and other supplies for aircraft and vessels, transportation, logistics, and coordination.</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;The importance of logistics can’t be underestimated. It’s not just about getting your fighting force fighting. You&#8217;ve got to supply them with food, fuel, and ammunition during all of that,&#8221; Graham said.</p>
+
+
+
+<h3 id="h-more-complex-training" class="wp-block-heading">More complex training</h3>
+
+
+
+<p class="wp-block-paragraph">With the new DCA with Australia in place, <a href="https://www.defensenews.com/global/asia-pacific/2026/04/29/us-marines-help-gun-down-beach-invaders-in-simulated-philippines-defense/">joint exercises</a>, especially Exercise ALON, will see a larger iteration next year, Teodoro said.</p>
+
+
+
+<p class="wp-block-paragraph">Exercise ALON, first held in 2023, is the biennial flagship joint training exercise between countries, focused on amphibious operations.</p>
+
+
+
+<p class="wp-block-paragraph">The 2025 edition saw Australia&#8217;s largest overseas military exercise for the year and showcased the ADF projecting combat forces into the contested West Philippine Sea, Graham said.</p>
+
+
+
+<p class="wp-block-paragraph">Apart from maritime training, Teodoro said there will be more aerial, land, cyber, and multidomain training exercises between Filipino and Australian troops.</p>
+
+
+
+<p class="wp-block-paragraph">Military officials told Defense News that Army training has been a priority area for the Australian military’s training playbook in the Philippines. The focus follows sweeping changes in both countries’ land forces to prepare them for modern conflicts.</p>
+
+
+
+<p class="wp-block-paragraph">While the Philippine Army expands from its signature jungle and urban warfare expertise toward coastal defense, the Australian ground service has pivoted toward littoral warfare.</p>
+
+
+
+<p class="wp-block-paragraph">Since 2023, exchanges have focused on techniques, tactics, and procedures for amphibious operations, Army spokesperson Col. Louie Dema-ala told Defense News.</p>
+
+
+
+<p class="wp-block-paragraph">But future iterations will include advanced training, Dema-ala said. “We are transitioning into a multi-domain capable Army.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">The exchange is not one-sided. Australia also stands to benefit from the Philippine Army&#8217;s experience operating in dense jungle terrain.</p>
+
+
+
+<p class="wp-block-paragraph">“This is not just a one-way process. We can learn from the jungle warfare fighting skills, and I think that’s important to stress. No one can tell us about the Philippines better than the Filipinos,” Graham said.</p>
+]]></content:encoded>
+	</item>
+		<item>
+		<title>First permanently assigned F-15EXs touch down at Kadena Air Base</title>
+		<link>https://www.defensenews.com/air/2026/11/16/first-permanently-assigned-f-15exs-touch-down-at-kadena-air-base/</link>
+		
+		<dc:creator><![CDATA[Cristina Stassis]]></dc:creator>
+		<pubDate>Mon, 16 Nov 2026 23:23:56 +0000</pubDate>
+				<category><![CDATA[Air Warfare]]></category>
+		<category><![CDATA[Asia Pacific]]></category>
+		<category><![CDATA[Daily News Roundup]]></category>
+		<category><![CDATA[Global]]></category>
+		<category><![CDATA[Newsletters]]></category>
+		<category><![CDATA[18th Wing]]></category>
+		<category><![CDATA[deterrence]]></category>
+		<category><![CDATA[F-15C]]></category>
+		<category><![CDATA[F-15D]]></category>
+		<category><![CDATA[F-15EX Eagle II]]></category>
+		<category><![CDATA[fighter jet]]></category>
+		<category><![CDATA[Gallemore]]></category>
+		<category><![CDATA[japan]]></category>
+		<category><![CDATA[Kadena Air Base]]></category>
+		<category><![CDATA[Pacific]]></category>
+		<guid isPermaLink="false"></guid>
+
+					<description><![CDATA[Kadena Air Base received their first permanently assigned F-15EX Eagle IIs, becoming the first installation abroad and second Air Force location to field the jet.]]></description>
+		
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">87996</post-id><media:thumbnail url="https://one.sightlinemg.com/wp-content/uploads/2026/11/261115-F-YH673-1239.jpg" width="4545" height="3024" type="image/jpeg" />
+<media:content medium="image" url="https://one.sightlinemg.com/wp-content/uploads/2026/11/261115-F-YH673-1239.jpg" width="4545" height="3024" type="image/jpeg" />
+<news:push>0</news:push>
+<content:encoded><![CDATA[
+<p class="wp-block-paragraph">A Japan air base became the first American installation abroad to receive two permanently assigned <a href="https://www.militarytimes.com/industry/techwatch/2026/04/24/us-air-force-aims-to-double-f-15ex-eagle-fleet/" target="_blank" rel="noreferrer noopener">F-15EX Eagle IIs</a> and the <a href="https://www.militarytimes.com/news/your-military/2026/09/11/in-first-oregon-guard-f-15exs-drop-live-bombs/" target="_blank" rel="noreferrer noopener">second-ever Air Force location</a> to field the <a href="https://www.militarytimes.com/industry/techwatch/2026/09/30/us-air-force-awards-238b-contract-to-boeing-for-22-f-15ex/" target="_blank" rel="noreferrer noopener">fighter jet</a>. </p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://www.militarytimes.com/news/your-military/2026/10/26/japan-air-base-imposes-junior-enlisted-alcohol-ban-curfew-after-local-murder/" target="_blank" rel="noreferrer noopener">Kadena Air Base</a>, located in Okinawa, Japan, received two of the fighter aircraft Sunday as the Air Force strives to increase U.S. airpower in the Pacific, according to a <a href="https://www.af.mil/News/Article-Display/Article/4648603/kadena-welcomes-first-permanently-assigned-f-15ex-eagle-ii-aircraft/" target="_blank" rel="noreferrer noopener">recent service release</a>, especially as the base continues to replace its <a href="https://www.militarytimes.com/news/your-military/2022/10/27/air-force-to-replace-kadena-f-15-squadrons-with-rotational-fighters/?contentFeatureId=f0fmoahPVC2AbfL-2-1-8&amp;contentQuery=%7B%22includeSections%22%3A%22%2Fhome%22%2C%22excludeSections%22%3A%22%22%2C%22feedSize%22%3A10%2C%22feedOffset%22%3A1065%7D" target="_blank" rel="noreferrer noopener">F-15C/D</a> fleet.</p>
+
+
+
+<p class="wp-block-paragraph">“[F-15EXs] strengthen our ability to deter aggression, respond to emerging threats and defend Japan alongside our allies and partners,” 18th Wing Commander Brig. Gen. John Gallemore said in the release.</p>
+
+
+
+<p class="wp-block-paragraph">“Their permanent presence at Kadena reinforces our commitment to the U.S.-Japan alliance and ensures we continue to bring advanced combat capabilities to one of the most strategically important regions in the world,” he continued.</p>
+
+
+
+<p class="wp-block-paragraph">In November 2022, the base first began withdrawing its legacy F-15C/D aircraft after four decades of service. The transition included rotational deployments of fourth- and fifth-generation fighters to maintain a fighter presence while maintainers, operators and mission support airmen sought the expertise needed to utilize a new platform as soon as it reaches operational capability, the release says.</p>
+
+
+
+<p class="wp-block-paragraph">Two years after the Oregon Air National Guard <a href="https://www.142wg.ang.af.mil/News/Article-Display/Article/3817716/novel-f-15-ex-eagle-ii-makes-its-debut-landing-in-portland-ore/" target="_blank" rel="noreferrer noopener">received</a> theirs, the F-15EXs at Kadena are expected to increase the base&#8217;s ability to conduct counterair operations and boost the service’s forward-deployed capabilities.</p>
+
+
+
+<p class="wp-block-paragraph">With advanced avionics, modernized electronic warfare systems and heightened weapons-carrying capacity, the aircraft are meant to support bilateral readiness alongside the Japan Air Self-Defense Force and other regional partners.</p>
+
+
+
+<p class="wp-block-paragraph">Kadena’s 44th and 67th Fighter Squadrons are both slated to operate the F-15EXs.</p>
+
+
+
+<p class="wp-block-paragraph">In preparation for the jets&#8217; arrival, operators from the 67th Fighter Squadron, which is part of Kadena’s 18th Operations Group, traveled to Eglin Air Force Base, Florida, and Portland Air National Guard Base, Oregon, to conduct aircraft qualification training.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Personnel from the 18th Aircraft Maintenance Squadron also coordinated with Boeing, the jet&#8217;s manufacturer, and teams at Eglin and Portland to progress technical proficiency. The personnel also supported F-15E operations at Seymour-Johnson Air Force Base, North Carolina, and Mountain Home Air Force Base, Idaho, to “keep their skills sharp.”</p>
+
+
+
+<p class="wp-block-paragraph">The news of the fighter’s arrival comes roughly seven months after the Air Force revealed their new acquisition goal regarding the F-15EX Eagle IIs as part of the service’s fiscal 2027 budget request, aiming to more than double the fleet to 267 aircraft, an increase from the previously planned 129 jets.</p>
+
+
+
+<p class="wp-block-paragraph">More recently, the Air Force awarded Boeing a $2.38 billion contract to produce 22 F-15EX Eagle II aircraft, bringing the total number of aircraft to be manufactured by the defense company to 120 under Lots 1 through 7.</p>
+]]></content:encoded>
+	</item>
+		<item>
+		<title>China has ‘normalized’ naval presence near Japan since political spat of 2025</title>
+		<link>https://www.defensenews.com/global/asia-pacific/2026/11/16/china-has-normalized-naval-presence-near-japan-since-political-spat-of-2025/</link>
+		
+		<dc:creator><![CDATA[Military Times staff]]></dc:creator>
+		<pubDate>Mon, 16 Nov 2026 17:02:51 +0000</pubDate>
+				<category><![CDATA[Asia Pacific]]></category>
+		<category><![CDATA[Daily News Roundup]]></category>
+		<category><![CDATA[Global]]></category>
+		<category><![CDATA[Naval]]></category>
+		<category><![CDATA[News]]></category>
+		<category><![CDATA[Newsletters]]></category>
+		<category><![CDATA[china]]></category>
+		<category><![CDATA[dn dnr]]></category>
+		<category><![CDATA[japan]]></category>
+		<category><![CDATA[naval deployment]]></category>
+		<category><![CDATA[Sanae Takaichi]]></category>
+		<category><![CDATA[taiwan]]></category>
+		<guid isPermaLink="false"></guid>
+
+					<description><![CDATA[Given its scale, the massive Chinese flotilla that included coast guard vessels alongside navy warships may have had Taiwan’s maritime neighbor Japan in its sights, military experts say.]]></description>
+		
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">87975</post-id><media:thumbnail url="https://one.sightlinemg.com/wp-content/uploads/2026/11/GettyImages-2285568855.jpg" width="3165" height="2110" type="image/jpeg" />
+<media:content medium="image" url="https://one.sightlinemg.com/wp-content/uploads/2026/11/GettyImages-2285568855.jpg" width="3165" height="2110" type="image/jpeg" />
+<news:push>0</news:push>
+<content:encoded><![CDATA[
+<p class="wp-block-paragraph">NEW TAIPEI CITY, Taiwan — In early November, Taiwan’s National Security Council secretary-general tracked more than 100 Chinese military-linked vessels near his island.</p>
+
+
+
+<p class="wp-block-paragraph">But given its scale, the massive flotilla that included coast guard vessels alongside <a href="https://www.defensenews.com/naval/2026/10/20/china-built-more-than-twice-naval-tonnage-of-us-in-2024-25-euronaval/">navy warships</a> may have had Taiwan’s maritime neighbor Japan in its sights, military experts say.</p>
+
+
+
+<p class="wp-block-paragraph">They say China has sent an outsized number of its far-seas <a href="https://www.defensenews.com/global/asia-pacific/2026/10/23/chinas-first-aircraft-carrier-forms-evolving-pattern-of-voyages-in-disputed-asian-seas/">naval deployments</a> to near Japan’s southernmost islands and nearby waters since a political dispute that erupted in November 2025 over a remark by Japanese Prime Minister Sanae Takaichi.</p>
+
+
+
+<p class="wp-block-paragraph">Takaichi told a Japanese House of Representatives committee session that month that a Chinese naval blockade or armed conflict involving Taiwan could constitute a “survival-threatening situation&#8221; for her own country not far away. China claims self-ruled Taiwan as its own and has not ruled out the use of force to take it.</p>
+
+
+
+<p class="wp-block-paragraph">“There is a direct link between Takaichi’s statement and the quality and quantity of deployments,” said Stephen Nagy, a visiting fellow with the Japan Institute for International Affairs think tank in Tokyo. “(China) is also sending a signal to Tokyo that if it continues its current position vis-a-vis Taiwan that Beijing will continue these activities.”</p>
+
+
+
+<p class="wp-block-paragraph">China is using the deployments, including live-fire drills, uncrewed drone missions and voyages by entire aircraft carrier groups, to exert an unrelenting, long-term pressure on Japan without violating international maritime laws, analysts said.</p>
+
+
+
+<p class="wp-block-paragraph">“By repeatedly transiting waters around the (southwestern) Islands, China is gradually normalizing PLA Navy activity within the first island chain, expanding its operational experience and creating a pattern of accepted presence,” said Katsuya Yamamoto, director of the Tokyo-based Sasakawa Peace Foundation’s strategy and deterrence program.</p>
+
+
+
+<p class="wp-block-paragraph">The first island chain includes Japan, Taiwan and the Philippines.</p>
+
+
+
+<p class="wp-block-paragraph">“In other words, it is establishing facts on the ground, or rather at sea, that broaden its future freedom of action,” Yamamoto said.</p>
+
+
+
+<p class="wp-block-paragraph">In the seven weeks after Takaichi’s comment, the U.S. think tank Center for Strategic and International Studies logged a spike in “notable” PLA escalatory moves. Over 2025 overall, it said, China showed just a “slight increase” in the number of PLA naval vessels reported operating in waters around Japan, including an increase in the number of Chinese ships within the contiguous zone of the disputed Senkaku Islands, which China calls the Diaoyu.</p>
+
+
+
+<p class="wp-block-paragraph">Deployments near the uninhabited, Japanese-controlled Senkakus have “remained at very high levels” over the past year as before, while joint Sino-Russian missions around Japan and Chinese naval activity near the outlying Japanese islets around the Miyako Island “seem to have increased”, said Jeffrey Kingston, a professor specializing in Asian studies and history at Temple University, Japan Campus.</p>
+
+
+
+<p class="wp-block-paragraph">Chinese and Russian aircraft patrolled in June over the Sea of Japan, followed by a joint naval passage in July in the Miyako Strait near outlying Japanese islets. Chinese and Russian surveillance aircraft did five separate flights near Japan in October.</p>
+
+
+
+<p class="wp-block-paragraph">Spokespeople for the Chinese ministries of foreign affairs and national defense have called China&#8217;s military actions fair, valid and peaceful.</p>
+
+
+
+<p class="wp-block-paragraph">China is probably using military moves as one in a series of measures – some economic – to get back at Takaichi for her November 2025 remarks, Kingston said. “They haven’t forgotten, that’s for sure,” he said. “They are in various ways trying to put the screws on her.”</p>
+
+
+
+<p class="wp-block-paragraph">Officials in Beijing still want a retraction of the prime minister’s November 2025 comments but it’s unlikely, Kingston believes.</p>
+
+
+
+<p class="wp-block-paragraph">The Japanese government has verbally protested against Chinese military moves, tracked Chinese ships with its own, and scrambled fighter jets.</p>
+
+
+
+<p class="wp-block-paragraph">Tokyo is now considering a 70 trillion to 80 trillion yen (as high as $508 billion) defense spending plan for the five-year period beginning in April 2027, up from 43 trillion yen in the previous half-decade span, Japanese media outlets have reported.</p>
+
+
+
+<p class="wp-block-paragraph">“As the security environment becomes increasingly severe, cooperation with the ally and like-minded countries is indispensable to peace and stability in the region,” Japan’s Ministry of Defense said in an Oct. 29 statement after a meeting with defense officials from Australia, the Philippines and the United States.</p>
+
+
+
+<p class="wp-block-paragraph">The ministry, it said, “will continue to take advantage of various opportunities to further strengthen such cooperation.”</p>
+]]></content:encoded>
+	</item>
+		<item>
+		<title>US Air Force eyes reviving WWII air bases in the Pacific</title>
+		<link>https://www.defensenews.com/global/asia-pacific/2026/11/06/us-air-force-eyes-reviving-wwii-air-bases-in-the-pacific/</link>
+		
+		<dc:creator><![CDATA[Christopher Woody]]></dc:creator>
+		<pubDate>Fri, 06 Nov 2026 15:28:23 +0000</pubDate>
+				<category><![CDATA[Asia Pacific]]></category>
+		<category><![CDATA[Daily News Roundup]]></category>
+		<category><![CDATA[Global]]></category>
+		<category><![CDATA[Newsletters]]></category>
+		<category><![CDATA[ACE]]></category>
+		<category><![CDATA[aircraft operations]]></category>
+		<category><![CDATA[guam]]></category>
+		<category><![CDATA[notice of intent]]></category>
+		<category><![CDATA[Pacific]]></category>
+		<category><![CDATA[Pacific Ocean]]></category>
+		<category><![CDATA[Rota]]></category>
+		<category><![CDATA[Saipan]]></category>
+		<category><![CDATA[Tinian]]></category>
+		<category><![CDATA[WWII]]></category>
+		<guid isPermaLink="false"></guid>
+
+					<description><![CDATA[The U.S. Air Force hopes to conduct more than 6,000 aircraft operations annually at airfields on three American islands in the northwest Pacific Ocean.]]></description>
+		
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">87635</post-id><media:thumbnail url="https://one.sightlinemg.com/wp-content/uploads/2026/11/1000w_q95-78.jpg" width="1000" height="665" type="image/jpeg" />
+<media:content medium="image" url="https://one.sightlinemg.com/wp-content/uploads/2026/11/1000w_q95-78.jpg" width="1000" height="665" type="image/jpeg" />
+<news:push>0</news:push>
+<content:encoded><![CDATA[
+<p class="wp-block-paragraph">The U.S. Air Force hopes to conduct more than 6,000 aircraft operations annually at four airfields on three American islands in the northwest Pacific Ocean, including <a href="https://thedateline.substack.com/p/new-bases-stretch-the-us-air-forces" target="_blank" rel="noopener">a major WWII-era airfield</a> that is being <a href="https://www.defensenews.com/global/asia-pacific/2024/04/10/us-air-force-issues-409-million-award-for-long-sought-pacific-airfield/" target="_blank" rel="noopener">refurbished</a>, according to an announcement from the Department of the Air Force. </p>
+
+
+
+<p class="wp-block-paragraph">The department published <a href="https://www.federalregister.gov/documents/2026/10/28/2026-21969/notice-of-intent-to-prepare-an-environmental-impact-statement-for-training-and-exercises-at" target="_blank" rel="noreferrer noopener">a notice of intent</a> to prepare an <a href="https://www.cateeis.com/">environmental impact</a> statement that will assess “potential social, economic, and environmental effects” of training and operations at Saipan International Airport, Tinian International Airport, Tinian North Field and Rota International Airport. The islands are part of the Commonwealth of the Northern Mariana Islands, an unincorporated U.S. territory. </p>
+
+
+
+<p class="wp-block-paragraph">The proposed training and exercises will support the Air Force’s <a href="https://www.defensenews.com/air/2024/08/22/us-air-force-eyes-missile-defense-for-dispersed-bases-in-china-fight/" target="_blank" rel="noopener">Agile Combat Operations</a> concept, which emphasizes dispersal of <a href="https://thedateline.substack.com/p/the-us-air-force-is-scouting-rival" target="_blank" rel="noopener">forces across airfields</a> and the ability to maneuver between them while <a href="https://thedateline.substack.com/p/us-air-force-rapid-runway-repair-training-in-the-pacific" target="_blank" rel="noopener">sustaining operations</a> under a range of conditions, with the goal of thwarting an adversary’s ability <a href="https://www.defensenews.com/opinion/2024/12/17/no-runways-no-sorties-chinese-missiles-threaten-us-airpower-plans/" target="_blank" rel="noopener">to shut down those operations</a> by targeting a single base. ACE, as it’s known, has developed largely in response to the Chinese military’s growing reach and expanding missile arsenal.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">The notice said the four airfields provide “a unique opportunity” to support ACE, with infrastructure that varies from “fully developed commercial airfields to expeditionary operating locations.” The three islands are within a few dozen nautical miles of each other, which would allow for training that reflects the complexity of distributed operations while reducing transit time between them. They are less than 100 nautical miles north of the major military bases on Guam, another U.S. territory, which would support the staging and deployment of forces for those exercises. </p>
+
+
+
+<p class="wp-block-paragraph">The three airfields “collectively provide a training environment that enables [the Air Force] to exercise distributed operations, test and employ tailorable force packages, strengthen sustainment and maneuver capabilities, and enhance operational resilience,” the notice reads. </p>
+
+
+
+<p class="wp-block-paragraph">The environmental impact statement will evaluate the potential effects of the proposed activities, which include small, medium and large trainings and exercises held several times a year for a few weeks at a time and consisting of up to 1,200 fixed-wing and 320 rotary-wing operations, like takeoffs and landings, annually at each airfield. It will also assess an alternative scenario with up to 1,400 fixed-wing and 384 rotary-wing operations per airfield annually and a “No Action Alternative.” </p>
+
+
+
+<p class="wp-block-paragraph">The trainings and exercises would be supported by up to 550,000 gallons of fuel at each airfield, up to 1,000 personnel per airfield, the temporary installation of expeditionary infrastructure, the handling of munitions like chaff and flares, as well as support services and pre-and post-training and exercise activities.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">The proposed activity comes after <a href="https://www.defensenews.com/global/asia-pacific/2024/04/10/us-air-force-issues-409-million-award-for-long-sought-pacific-airfield/" target="_blank" rel="noopener">several years of work</a> to upgrade the airfields in question, especially the airfields on Tinian, which were built and heavily used during WWII. North Field was inactive after the war and was largely covered with vegetation when the rehabilitation effort began in late 2023. The Air Force also upgraded port and roadway infrastructure, fuel pipelines and airfield surfaces, and utilities to facilitate <a href="https://thedateline.substack.com/p/new-bases-stretch-the-us-air-forces" target="_blank" rel="noopener">expanded operations on Tinian</a>. </p>
+
+
+
+<p class="wp-block-paragraph">The airfield rehabilitation efforts have created <a href="https://thedateline.substack.com/p/new-bases-stretch-the-us-air-forces" target="_blank" rel="noopener">some questions</a> among Air Force leaders about resourcing and funding, particularly as the war with Iran has placed new <a href="https://breakingdefense.com/2026/07/pacaf-looks-to-reduce-exercise-participation-to-preserve-readiness-commander/" target="_blank" rel="noopener">demands</a> on the force. Island residents also have misgivings about the projects. While some welcome the investment that the construction and military operations will bring, others <a href="https://www.postguam.com/news/local/military-a-no-show-at-taitague-briefing/article_754f61d6-899f-454c-9621-844c1e70db9c.html" target="_blank" rel="noopener">have doubts</a> that the increased activity will really <a href="https://www.guampdn.com/opinion/columnists/opinion-lotz-how-will-we-house-the-military-and-locals/article_a14390fb-f64b-4011-8e17-2c8e5582f6d9.html?utm_source=substack&amp;utm_medium=email" target="_blank" rel="noopener">benefit</a> the islands’ populations and that the Pentagon will be transparent about its activity and responsive to local concerns.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">The Department of the Air Force will hold public meetings this month on Saipan, Tinian and Rota to get feedback on the proposal, with <a href="https://www.cateeis.com/comment/" target="_blank" rel="noopener">written comments</a> due by Nov. 29. The department plans to produce a draft environmental impact statement for public comment in fall 2027 and a final version in mid-2028. </p>
+]]></content:encoded>
+	</item>
+		<item>
+		<title>Israeli defense company says this trigger is programmed to shoot drones</title>
+		<link>https://www.defensenews.com/news/2026/11/05/israeli-defense-company-says-this-trigger-is-programmed-to-shoot-drones/</link>
+		
+		<dc:creator><![CDATA[Daniel Terrill]]></dc:creator>
+		<pubDate>Thu, 05 Nov 2026 14:00:00 +0000</pubDate>
+				<category><![CDATA[Asia Pacific]]></category>
+		<category><![CDATA[AUSA]]></category>
+		<category><![CDATA[Daily News Roundup]]></category>
+		<category><![CDATA[Digital Show Dailies]]></category>
+		<category><![CDATA[Global]]></category>
+		<category><![CDATA[Industry]]></category>
+		<category><![CDATA[Mideast Africa]]></category>
+		<category><![CDATA[MilTech]]></category>
+		<category><![CDATA[News]]></category>
+		<category><![CDATA[Newsletters]]></category>
+		<category><![CDATA[anti-drone]]></category>
+		<category><![CDATA[Arbel]]></category>
+		<category><![CDATA[ausa 2026]]></category>
+		<category><![CDATA[dn dnr]]></category>
+		<category><![CDATA[Israel Weapon Industries]]></category>
+		<category><![CDATA[IWI]]></category>
+		<guid isPermaLink="false"></guid>
+
+					<description><![CDATA[The company says the Arbel electromechanical device will release a cadence of fire optimized for shooting down drones. ]]></description>
+		
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">87566</post-id><media:thumbnail url="https://one.sightlinemg.com/wp-content/uploads/2026/11/IWI-Arbel-cover.jpg" width="1080" height="720" type="image/jpeg" />
+<media:content medium="image" url="https://one.sightlinemg.com/wp-content/uploads/2026/11/IWI-Arbel-cover.jpg" width="1080" height="720" type="image/jpeg" />
+<news:push>0</news:push>
+<content:encoded><![CDATA[
+<p class="wp-block-paragraph">Thailand&#8217;s Ministry of Defence began fielding a new computerized rifle trigger designed to help soldiers shoot down small drones, according to last month&#8217;s announcement by the device&#8217;s manufacturer, <a href="https://www.militarytimes.com/off-duty/gearscout/2015/01/29/iwi-reintroduces-the-galil-ace-to-the-us-market/">Israel Weapon Industries</a>, or IWI. Company officials consider the deployment a real-world endorsement of the <a href="https://iwi.net/anti-drone/">Arbel Anti-Drone System</a> as a potential solution for countering drones on the battlefield.</p>
+
+
+
+<p class="wp-block-paragraph">In an interview with Defense News, Semion Dukhan, IWI&#8217;s marketing director, described common counter-drone options such as <a href="https://www.militarytimes.com/industry/techwatch/2026/07/01/the-us-military-wants-a-fleet-of-laser-trucks-heres-what-they-might-look-like/">lasers</a>, <a href="https://www.militarytimes.com/news/your-military/2025/06/11/georgia-guard-activates-its-first-electromagnetic-warfare-unit/">high-powered electronics</a>, <a href="https://www.militarytimes.com/industry/techwatch/2026/08/04/us-army-wants-a-surface-to-air-missile-that-can-destroy-small-drones/">interceptors</a> and <a href="https://www.militarytimes.com/news/your-military/2026/08/03/meet-drone-round-the-company-supplying-marines-with-anti-drone-ammo/">specialized ammunition</a> as “not viable in the long run.” He argued that while these technologies can be effective, they often have limitations involving cost, mobility or ease of use. Arbel&#8217;s advantage, he said, is its practicality.</p>
+
+
+
+<p class="wp-block-paragraph">“The Arbel is putting a computer to the trigger mechanism of the weapon, so in the context of an anti-drone rifle, what we do is we put the computer in the lower receiver of a standard AR-15 rifle … and with this computer, we control the trigger mechanism of the weapon,” Dukhan said.</p>
+
+
+
+<p class="wp-block-paragraph">He explained that Arbel functions somewhat like a fully automatic weapon in that depressing and holding the trigger engages the system. “So you as an operator, the first bullet that you will shoot, will be purely mechanical … and from the second bullet onward, the system controls the rate of fire to a specific rate of fire that we analyzed as optimal,” he said.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" src="https://one.sightlinemg.com/wp-content/uploads/2026/11/IWI-Arbel.png" alt="IWI Arbel" class="wp-image-122409" /><figcaption class="wp-element-caption">An IWI spokesman says the Arbel trigger device will fit with any standard AR-15 lower receiver. (IWI)</figcaption></figure>
+
+
+
+<p class="wp-block-paragraph">Dukhan said IWI determined the “optimal” rate by analyzing thousands of test shots. “We came down to the specific figure … to get the most chances to hit this kind of target,” he said, describing a target measuring 10 to 15 inches in diameter and flying at roughly 60 kilometers per hour at ranges of 150 to 200 meters.</p>
+
+
+
+<p class="wp-block-paragraph">When IWI unveiled Arbel in 2024, the company said it was intended to improve marksmanship under stressful conditions. Early <a href="https://www.youtube.com/watch?v=_WB36CpfoI0">promotional videos</a> show an operator depressing and holding the trigger before Arbel releases rounds once the system determines the conditions are right.</p>
+
+
+
+<p class="wp-block-paragraph">Dukhan explained that the original version calculates stability and range before discharging a round, whereas the anti-drone version uses an algorithmically calculated rate of fire. “For the anti-drone, it&#8217;s only timing. When you, as a user, use the anti-drone algorithm and put it on the Arbel anti-drone safety position, then it only works on timing,” he said.</p>
+
+
+
+<p class="wp-block-paragraph">He added that the option is more “predictable” than the stability-based version, leaving the operator to focus on aiming and following the target. He argued that Arbel can turn anyone with a rifle into a counter-drone operator.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Before Thailand, approximately 25 other countries had already adopted the Arbel system for improving marksmanship or countering drones, according to IWI.</p>
+]]></content:encoded>
+	</item>
+		<item>
+		<title>India orders next-gen corvettes for $5.7b under broad naval modernization push</title>
+		<link>https://www.defensenews.com/global/asia-pacific/2026/11/03/india-orders-next-gen-corvettes-for-5-7b-under-broad-naval-modernization-push/</link>
+		
+		<dc:creator><![CDATA[Anjana Pasricha]]></dc:creator>
+		<pubDate>Tue, 03 Nov 2026 12:56:27 +0000</pubDate>
+				<category><![CDATA[Asia Pacific]]></category>
+		<category><![CDATA[Euronaval Coverage]]></category>
+		<category><![CDATA[Global]]></category>
+		<category><![CDATA[Naval]]></category>
+		<category><![CDATA[News]]></category>
+		<category><![CDATA[Special Multimedia Reports]]></category>
+		<category><![CDATA[dn dnr]]></category>
+		<category><![CDATA[Euronaval 2026]]></category>
+		<category><![CDATA[Garden Reach Shipbuilders and Engineers]]></category>
+		<category><![CDATA[Goa Shipyard]]></category>
+		<category><![CDATA[india]]></category>
+		<category><![CDATA[naval warfare]]></category>
+		<guid isPermaLink="false"></guid>
+
+					<description><![CDATA[New Delhi is spending big money on new corvettes from domestic shipbuilders, carrier-capable fighters from France and submarines from Germany.]]></description>
+		
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">87475</post-id><media:thumbnail url="https://one.sightlinemg.com/wp-content/uploads/2026/11/GettyImages-1248032936.jpg" width="6048" height="3956" type="image/jpeg" />
+<media:content medium="image" url="https://one.sightlinemg.com/wp-content/uploads/2026/11/GettyImages-1248032936.jpg" width="6048" height="3956" type="image/jpeg" />
+<news:push>0</news:push>
+<content:encoded><![CDATA[
+<p class="wp-block-paragraph">NEW DELHI — In a major push to <a href="https://www.defensenews.com/global/asia-pacific/2026/06/23/indias-three-new-naval-ships-boost-maritime-firepower/">strengthen its naval capabilities</a>, India signed a $5.7 billion contract with domestic companies Monday to build eight next-generation, corvettes that will undertake anti-submarine, anti-surface and coastal defense operations.</p>
+
+
+
+<p class="wp-block-paragraph">The new ships will gradually replace a fleet of aging single-role corvettes.</p>
+
+
+
+<p class="wp-block-paragraph">India’s efforts to upgrade its maritime strength include plans to acquire six advanced submarines through a partnership with Germany and base 26 French Rafale Marine aircraft aboard its aircraft carriers.</p>
+
+
+
+<p class="wp-block-paragraph">The Defense Ministry said the corvettes will be equipped with state-of-the-art capabilities, including advanced missiles, weapons and sensor suites enabling them to undertake missions across the air, surface and sub-surface domains.</p>
+
+
+
+<p class="wp-block-paragraph">The ministry said the project marks a “significant milestone in India&#8217;s indigenous warship design and construction capabilities” because it is the first project in which the ships will be designed by the Indian Navy and built in domestic, state-owned shipyards.</p>
+
+
+
+<p class="wp-block-paragraph">Designed as high-speed, stealth combatants, five of the corvettes will be built by Garden Reach Shipbuilders and Engineers (GRSE) and three by Goa Shipyard. The vessels would have a length of 127 meters, a beam of 17.6 meters, a deadweight tonnage of 4,950 and a maximum speed of 26 knots, according to GRSE.</p>
+
+
+
+<p class="wp-block-paragraph">The corvettes will carry medium-range anti-ship, medium-range surface-to-air missiles and 324 mm torpedo tubes.</p>
+
+
+
+<p class="wp-block-paragraph">The induction of these ships will enhance the Indian Navy’s operational capabilities in safeguarding maritime trade routes, conducting anti-surface and anti-submarine warfare operations, strengthening coastal defense, and undertaking littoral combat operations according to the Defense Ministry.</p>
+
+
+
+<p class="wp-block-paragraph">With about 90% of India’s trade moving through maritime routes and a coastline stretching more than 11,000 km, protecting sea lanes and coastal waters is an important security priority for the country.</p>
+
+
+
+<p class="wp-block-paragraph">The corvettes are part of a wider push by India to bolster its naval strength amid China’s expanding presence in the Indo-Pacific and Pakistan’s deepening military cooperation with Beijing.</p>
+
+
+
+<p class="wp-block-paragraph">Chief of the Naval Staff, Admiral Dinesh Tripathi, said in February that India aims to become a navy with 200-plus ships by 2035. The navy currently has 145 ships and submarines.</p>
+
+
+
+<p class="wp-block-paragraph">That expansion includes plans to acquire six advanced submarines under an approximately $8 billion deal with Germany.</p>
+
+
+
+<p class="wp-block-paragraph">The German ambassador to New Delhi, Jasper Wieck, said in September that the proposed deal to build six next-generation conventional submarines has been set on the German side. “In terms of the documents, it has already been finalized and the German side has agreed to it. It is now up to the Indian side to complete and conclude its internal processes,”&nbsp; Wieck told reporters.</p>
+
+
+
+<p class="wp-block-paragraph">The proposed program involves German shipyard TKMS collaborating with Indian state-owned Mazagon Dock Shipbuilders Ltd. to build the vessels in India. The submarines will be equipped with air-independent propulsion (AIP) technology, allowing them to remain underwater for longer periods than conventional diesel-electric submarines and making them particularly suited to patrols in the strategic waters of the Indo-Pacific.</p>
+
+
+
+<p class="wp-block-paragraph">Meanwhile, on Oct. 29, a Rafale Marine fighter jet also landed for the first time on India&#8217;s newest aircraft carrier INS Vikrant, marking a successful carrier compatibility trial.</p>
+
+
+
+<p class="wp-block-paragraph">The trial comes 18 months after India signed an approximately $7.5 billion contract with France to acquire 26 Rafale Marine aircraft, comprising 22 fighters and four trainer aircraft.</p>
+
+
+
+<p class="wp-block-paragraph">“The ongoing trials mark the first steps towards operationalization of the aircraft in the Indian Navy,” the Indian Navy said.</p>
+
+
+
+<p class="wp-block-paragraph">The Rafales already operate from French aircraft carriers, but their compatibility with the Indian ship’s different launch and recovery arrangements needs to be tested.</p>
+
+
+
+<p class="wp-block-paragraph">The French Rafales will join the Navy’s existing Russian MiG-29Ks and bring modern multirole strike capability to both of its carriers.</p>
+]]></content:encoded>
+	</item>
+		<item>
+		<title>Australia preps Bluebottle USV for submarine-hunting role</title>
+		<link>https://www.defensenews.com/global/asia-pacific/2026/11/03/australia-preps-bluebottle-usv-for-submarine-hunting-role/</link>
+		
+		<dc:creator><![CDATA[Gordon Arthur]]></dc:creator>
+		<pubDate>Tue, 03 Nov 2026 12:19:38 +0000</pubDate>
+				<category><![CDATA[Asia Pacific]]></category>
+		<category><![CDATA[Euronaval Coverage]]></category>
+		<category><![CDATA[Global]]></category>
+		<category><![CDATA[Naval]]></category>
+		<category><![CDATA[News]]></category>
+		<category><![CDATA[Special Multimedia Reports]]></category>
+		<category><![CDATA[Unmanned]]></category>
+		<category><![CDATA[australia]]></category>
+		<category><![CDATA[dn dnr]]></category>
+		<category><![CDATA[Euronaval 2026]]></category>
+		<category><![CDATA[naval surface drone]]></category>
+		<category><![CDATA[unmanned]]></category>
+		<guid isPermaLink="false"></guid>
+
+					<description><![CDATA["I want potential adversaries to understand that, when they see an Ocius Bluebottle USV, it’s a signal to get out of our ocean,” Minister for Defence Industry Pat Conroy said.]]></description>
+		
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">87467</post-id><media:thumbnail url="https://one.sightlinemg.com/wp-content/uploads/2026/11/2-5.jpg" width="6720" height="4480" type="image/jpeg" />
+<media:content medium="image" url="https://one.sightlinemg.com/wp-content/uploads/2026/11/2-5.jpg" width="6720" height="4480" type="image/jpeg" />
+<news:push>0</news:push>
+<content:encoded><![CDATA[
+<p class="wp-block-paragraph">CHRISTCHURCH, New Zealand — Australia’s Navy is doubling down on unmanned systems as it adopts platforms like the Bluebottle unmanned surface vessel and <a href="https://www.defensenews.com/naval/2026/11/02/australia-unveils-secretive-ghost-shark-underwater-drone-payloads/">Ghost Shark</a> and Speartooth extra-large autonomous underwater vehicles.</p>
+
+
+
+<p class="wp-block-paragraph">The Bluebottle unmanned surface vessel – or USV for short – produced by Ocius Technology, is powered primarily by wind, wave and sun to give persistent, at-sea surveillance for weeks at a time.</p>
+
+
+
+<p class="wp-block-paragraph">“I’ve said before that I want potential adversaries to understand that, when they see an Ocius Bluebottle USV, it’s a signal to get out of our ocean,” Minister for Defence Industry Pat Conroy has said.</p>
+
+
+
+<p class="wp-block-paragraph">Australia possesses the world’s third-largest exclusive economic zone, behind only those of France and the United States.</p>
+
+
+
+<p class="wp-block-paragraph">As well as conducting surveillance, the autonomous Bluebottle has been given a new tool to help it hunt enemy submarines on Australia’s periphery: the BlueSentry thin-line, fiber-optic sonar towed behind the Bluebottle.</p>
+
+
+
+<p class="wp-block-paragraph">In fact, Thales Australia opened an assembly line for the BlueSentry sonar in late October 2026. This multimillion-dollar facility – jointly funded by the company and the Australian government – is located in western Sydney.</p>
+
+
+
+<p class="wp-block-paragraph">As well as the BlueSentry, the complex will design, make, integrate and sustain towed-array sonars for submarines and warships. Thales will produce towed-array sonars for Australia’s six incoming Hunter-class frigates being constructed by BAE Systems Australia.</p>
+
+
+
+<p class="wp-block-paragraph">Furthermore, the plant will sustain existing Thales sonars on Australia’s six Collins-class diesel-electric submarines.</p>
+
+
+
+<p class="wp-block-paragraph">“The new facility boosts this Australian-made deterrence by ensuring end-to-end sovereign manufacturing capability and capacity for next-generation, towed-array sonar systems that support submarines and surface combatants, and thin-line towed arrays for uncrewed maritime systems serving both Australian and export markets,” Thales Australia said in a statement.</p>
+
+
+
+<p class="wp-block-paragraph">Under Project Sea 1200, the Royal Australian Navy ordered 40 Bluebottle USVs for A$176 million (US$124 million) in March this year, while the country’s Border Command already operates 15 other Bluebottles to monitor waters north of Australia.</p>
+
+
+
+<p class="wp-block-paragraph">With demand for Bluebottles expanding, Ocius opened a new engineering, production and maintenance hub for the USVs in Sydney on Oct. 16, 2026. It incorporates a 24/7 global operations center to monitor Bluebottles crisscrossing the world’s oceans.</p>
+
+
+
+<p class="wp-block-paragraph">A week earlier, Ocius Technology opened its first maintenance base outside Australia. That facility is located in Auckland, New Zealand, and it will service two Bluebottles acquired by New Zealand’s navy in April 2025.</p>
+
+
+
+<p class="wp-block-paragraph">Last month, Australia also announced it was donating Bluebottles to Fiji. The first units should arrive there in early 2027, and they will help combat drug smuggling, illegal fishing and organized crime.</p>
+
+
+
+<p class="wp-block-paragraph">Australian Navy Chief Vice Adm. Matt Buckley said: “In terms of our platforms themselves, of course they must continue to evolve, and the evolution of modular payloads that we can fit to uncrewed vessels like the Ghost Shark, like the Speartooth, like the Bluebottle creates enormous flexibility for us and allows us to adapt these systems to future missions and future requirements.”</p>
+]]></content:encoded>
+	</item>
+	</channel>
+</rss>

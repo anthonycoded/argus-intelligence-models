@@ -1,0 +1,8 @@
+{
+  "feeds": [
+    {
+      "id": "us_navy_news",
+      "url": "https://www.navy.mil/DesktopModules/ArticleCS/RSS.ashx?ContentType=1&Site=1067&max=10"
+    }
+  ]
+}
