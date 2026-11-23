@@ -1,0 +1,10 @@
+{
+  "countries": [],
+  "organizations": [],
+  "event_date": null,
+  "event_location": null,
+  "evidence_status": "unknown",
+  "event_coverage_note": "REPLACE with the actual article/event scope explanation",
+  "events": [],
+  "evidence": []
+}

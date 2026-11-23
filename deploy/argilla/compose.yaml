@@ -1,0 +1,87 @@
+name: aic1-annotation
+x-common: &common
+  ARGILLA_HOME_PATH: /var/lib/argilla
+  ARGILLA_ELASTICSEARCH: http://search:9200
+  ARGILLA_DATABASE_URL: postgresql+asyncpg://argilla:${AIC_ARGILLA_DB_PASSWORD:?Set database password}@database:5432/argilla
+  ARGILLA_REDIS_URL: redis://queue:6379/0
+  HF_HUB_DISABLE_TELEMETRY: "1"
+  HF_HUB_OFFLINE: "1"
+  ARGILLA_ENABLE_SHARE_YOUR_PROGRESS: "false"
+services:
+  server:
+    image: argilla/argilla-server:v2.8.0@sha256:6f4af8fcf4b809d25aa88a6a4f8838dbacab9296c83b055a9a58f1db7526431a
+    ports:
+      - "127.0.0.1:${AIC_ARGILLA_PORT:-6900}:6900"
+    environment:
+      <<: *common
+      USERNAME: ${AIC_ARGILLA_USERNAME:?Set reviewer username}
+      PASSWORD: ${AIC_ARGILLA_PASSWORD:?Set reviewer password}
+      API_KEY: ${AIC_ARGILLA_API_KEY:?Set API key}
+      WORKSPACE: aic1
+    volumes:
+      - home:/var/lib/argilla
+    depends_on:
+      database: {condition: service_healthy}
+      search: {condition: service_healthy}
+      queue: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:6900/api/status', timeout=5)"]
+      interval: 15s
+      timeout: 10s
+      retries: 20
+    networks: [annotation, web]
+  worker:
+    image: argilla/argilla-server:v2.8.0@sha256:6f4af8fcf4b809d25aa88a6a4f8838dbacab9296c83b055a9a58f1db7526431a
+    environment: *common
+    command: [python, -m, argilla_server, worker, --num-workers, "1"]
+    volumes:
+      - home:/var/lib/argilla
+    depends_on:
+      server: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, -c, "from pathlib import Path; assert b'argilla_server' in Path('/proc/1/cmdline').read_bytes()"]
+      interval: 30s
+    networks: [annotation]
+  database:
+    image: postgres:14.17-alpine@sha256:8430d17c310fe23e0b7dc930dad8b1020221f35a43545705b5dfad6ad40786d9
+    environment:
+      POSTGRES_USER: argilla
+      POSTGRES_DB: argilla
+      POSTGRES_PASSWORD: ${AIC_ARGILLA_DB_PASSWORD:?Set database password}
+    volumes: [database:/var/lib/postgresql/data]
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U argilla -d argilla"]
+      interval: 5s
+      retries: 20
+    networks: [annotation]
+  search:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.17.0@sha256:2f602552550869fb29b6fd5848c5118d3ef3a2e1d5d45802e3ab9088cb2de8e2
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: "false"
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+    volumes: [search:/usr/share/elasticsearch/data]
+    healthcheck:
+      test: [CMD-SHELL, "curl -fsS 'http://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=5s'"]
+      interval: 10s
+      timeout: 10s
+      retries: 30
+    networks: [annotation]
+  queue:
+    image: redis:7.4.2-alpine@sha256:02419de7eddf55aa5bcf49efb74e88fa8d931b4d77c07eff8a6b2144472b6952
+    command: [redis-server, --appendonly, "yes"]
+    volumes: [queue:/data]
+    healthcheck:
+      test: [CMD, redis-cli, ping]
+      interval: 5s
+      retries: 20
+    networks: [annotation]
+networks:
+  web:
+  annotation:
+    internal: true
+volumes:
+  home:
+  database:
+  search:
+  queue:

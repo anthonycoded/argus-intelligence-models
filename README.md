@@ -16,6 +16,9 @@ or automatic truth labels are introduced.
 [Phase 2O](README_PHASE2O.md) prepares the first real global candidate review batch,
 with source coverage, reproducibility commands and human-review instructions.
 
+[Phase 2P](README_PHASE2P.md) adds a localhost Argilla 2.8 annotation interface and
+validated staging while retaining Phase 2M's explicit approval and rights boundary.
+
 ## Windows 11 / Command Prompt
 
 ```bat

@@ -1,4 +1,7 @@
 .venv/
+.venv-argilla/
+data/argilla/
+data/backups/
 # Generated research artifacts (already tracked files remain tracked).
 data/discovery/
 data/embedding_cache/
