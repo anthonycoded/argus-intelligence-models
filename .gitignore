@@ -1,4 +1,28 @@
 .venv/
+# Generated research artifacts (already tracked files remain tracked).
+data/discovery/
+data/embedding_cache/
+data/incoming/
+data/labeled/
+data/splits/
+data/snapshots/
+data/global_annotations/
+data/review_queue/
+data/provenance/
+data/policy_reviews/
+data/*.json
+data/*.jsonl
+.cache/
+.huggingface/
+.idea/
+# Credentials and local configuration.
+.env
+.env.*
+!.env.example
+.aws/
+credentials*
+*.pem
+*.key
 __pycache__/
 .pytest_cache/
 models/

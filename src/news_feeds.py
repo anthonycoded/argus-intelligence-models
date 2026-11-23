@@ -13,7 +13,6 @@ import re
 import socket
 import ssl
 import tempfile
-import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.error import HTTPError, URLError
@@ -22,6 +21,7 @@ from urllib.request import Request, ProxyHandler, HTTPSHandler, HTTPRedirectHand
 
 from .candidate_import import canonical_source
 from .feed_automation import priority
+from .safe_xml import parse_xml
 
 MAX_BYTES = 2 * 1024 * 1024
 ROOT = 'defensenews.com'
@@ -73,12 +73,7 @@ def text_of(entry, key):
     return ''
 
 def parse(raw: bytes, collected_at: str) -> tuple[list[dict], dict]:
-    if len(raw) > MAX_BYTES or re.search(br'<!\s*(?:DOCTYPE|ENTITY)\b', raw, re.I):
-        raise ValueError('Unsafe or oversized XML')
-    try:
-        root = ET.fromstring(raw)
-    except ET.ParseError as exc:
-        raise ValueError('Invalid XML') from exc
+    root = parse_xml(raw, MAX_BYTES)
     top = localname(root.tag)
     if top == 'rss':
         channel = next((x for x in root if localname(x.tag) == 'channel'), None)

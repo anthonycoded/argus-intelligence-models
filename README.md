@@ -32,11 +32,16 @@ The `data/labeled/pilot.jsonl` file starts empty on purpose. It contains **no gr
 When ready:
 
 ```bat
-python -m src.split_dataset --input data/labeled/pilot.jsonl --out data/splits
-python -m src.train --data data/splits --model distilbert/distilbert-base-uncased
+python -m src.dataset_integrity report
 ```
 
-The split command will refuse to run on fewer than 30 verified examples or fewer than 3 event groups per class; this is a **sanity floor**, not a meaningful evaluation sample. With 200–500 pilot examples, evaluate carefully, and reserve a truly held-out test set for final comparison. Training downloads model weights on first use. `src.train` never accesses the test split and logs validation metrics only.
+Phase 2L requires eligible frozen snapshot and split manifests for training. Raw
+JSONL training and legacy snapshots are refused. Follow [README_PHASE2L.md](README_PHASE2L.md)
+for the complete workflow. The split command requires at least 30 eligible examples
+and three independent leakage groups per class; this is a **sanity floor**, not a
+meaningful evaluation sample. The trainer validates all three splits before any ML
+import, uses train/validation only for learning and selection, and loads weights
+locally without downloading them.
 
 ## Dataset rules
 - Exactly one JSON object per line, UTF-8.

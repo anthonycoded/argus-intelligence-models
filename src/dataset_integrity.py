@@ -7,13 +7,11 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import os
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 from uuid import uuid4
 
-from .annotation_schema import validate_annotation
 from .candidate_import import canonical_source, fingerprint
 from .schema import LABELS, read_records, validate_record
 from .topic_spec import read_topic_spec
@@ -73,13 +71,26 @@ def attest_rights(record_id: str, rights_status: str, evidence: str, content_typ
         raise ValueError("Invalid rights status or content type")
     if not evidence.strip() or not approver.strip():
         raise ValueError("Evidence and approver are required")
-    if not any(r["record_id"] == record_id for r in read_records(approved)):
+    row = next((r for r in read_records(approved) if r["record_id"] == record_id), None)
+    if row is None:
         raise ValueError("Unknown approved record")
-    if not (provenance_dir / f"{record_id}.json").exists():
+    if not record_id.startswith("aic1-") or len(record_id) != 37 or any(c not in "0123456789abcdef" for c in record_id[5:]):
+        raise ValueError("Invalid record ID")
+    provenance_path = provenance_dir / f"{record_id}.json"
+    if not provenance_path.exists():
         raise ValueError("Backfill provenance first")
+    prov = read_json(provenance_path)
+    if (prov.get("record_id") != record_id
+            or prov.get("canonical_source_id") != canonical_source(row["source_id"])
+            or prov.get("text_sha256") != fingerprint(row["article_text"])):
+        raise ValueError("Provenance identity/content mismatch")
     decision = {"record_id": record_id, "rights_status": rights_status,
                 "content_type": content_type, "rights_note": evidence.strip(),
-                "attested_by": approver.strip(), "attested_at": datetime.now(timezone.utc).isoformat()}
+                "attested_by": approver.strip(), "attested_at": datetime.now(timezone.utc).isoformat(),
+                "source_record_hash": hashlib.sha256(json.dumps(row, sort_keys=True, ensure_ascii=False).encode()).hexdigest(),
+                "content_sha256": hashlib.sha256(row["article_text"].encode("utf-8")).hexdigest(),
+                "canonical_source_id": canonical_source(row["source_id"]),
+                "provenance_sha256": hashlib.sha256(provenance_path.read_bytes()).hexdigest()}
     decisions = provenance_dir / "rights_decisions"
     write_new(decisions / f"{record_id}-{uuid4().hex}.json", decision)
     return decision
@@ -163,29 +174,38 @@ def snapshot_report(approved: Path, provenance_dir: Path, reviews_dir: Path,
                     new_row["annotation_policy_version"] = spec["policy_version"]
                     new_row["annotation_version"] = row["annotation_version"] + "+policy_review"
                     validate_record(new_row, 1)
+        if not reasons:
+            # Phase 2L: eligibility also requires content-bound rights evidence,
+            # structured approval and attributable policy reviews. Import lazily
+            # because the manifest module shares these legacy report helpers.
+            from .training_manifest import _eligible_row
+            try:
+                new_row, _ = _eligible_row(row, spec, provenance_dir, reviews_dir, approved.parent)
+            except (OSError, ValueError, TypeError, KeyError) as exc:
+                reasons.append(f"eligibility_evidence_invalid: {exc}")
         if reasons:
             blocked[row["record_id"]] = reasons
         else:
             included.append(new_row)
     groups = Counter(x["event_group_id"] for x in included)
     counts = Counter(x["label"] for x in included)
+    from .split_dataset import split_grouped
+    try:
+        split_grouped(included)
+        split_ready, split_reason = True, None
+    except ValueError as exc:
+        split_ready, split_reason = False, str(exc)
     report = {"target_policy": spec["policy_version"], "approved_total": len(read_records(approved)),
               "eligible": len(included), "blocked": blocked, "label_counts": dict(counts),
-              "unique_eligible_event_groups": len(groups), "training_ready": len(included) >= 20 and all(counts[c] >= 3 for c in LABELS) and len(groups) >= 10}
+              "unique_eligible_event_groups": len(groups), "snapshot_eligible": bool(included),
+              "split_ready": split_ready, "split_readiness_reason": split_reason,
+              "training_ready": False, "training_manifest_required": True}
     return report, included
 
 
 def freeze_snapshot(report: dict, rows: list[dict], output_dir: Path) -> Path:
-    if not report["training_ready"]:
-        raise ValueError("Dataset not ready: minimum 20 eligible, 3 per class, 10 event groups")
-    output_dir.mkdir(parents=True, exist_ok=True)
-    payload = "".join(json.dumps(r, ensure_ascii=False, sort_keys=True) + "\n" for r in sorted(rows, key=lambda x: x["record_id"]))
-    digest = hashlib.sha256(payload.encode("utf-8")).hexdigest()
-    path = output_dir / f"aic1-{report['target_policy']}-{digest[:12]}.jsonl"
-    with path.open("x", encoding="utf-8") as handle:
-        handle.write(payload)
-    write_new(path.with_suffix(".manifest.json"), {**report, "sha256": digest, "records": len(rows), "event_group_splitting_required": True})
-    return path
+    """Deprecated: caller-supplied report booleans cannot establish eligibility."""
+    raise ValueError("Legacy snapshot not ready for training: use training_manifest.create_snapshot with source evidence")
 
 
 def main() -> None:
@@ -225,7 +245,10 @@ def main() -> None:
         report, rows = snapshot_report(args.approved, args.provenance_dir, args.reviews_dir, args.topic)
         result = report
         if args.command == "snapshot" and args.write:
-            result = {**report, "snapshot_file": str(freeze_snapshot(report, rows, args.output_dir))}
+            from .training_manifest import create_snapshot
+            manifest = create_snapshot(args.approved, args.provenance_dir, args.reviews_dir,
+                                       args.topic, args.output_dir)
+            result = {**report, "snapshot_manifest": str(manifest)}
     print(json.dumps(result, indent=2, ensure_ascii=False))
 
 if __name__ == "__main__":

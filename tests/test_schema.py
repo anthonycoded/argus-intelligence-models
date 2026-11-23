@@ -43,7 +43,8 @@ def test_group_disjoint():
     rows = []
     for label in ("unrelated", "partially_relevant", "relevant"):
         for i in range(12):
-            rows.append(record(record_id=f"{label}-{i}",event_group_id=f"{label}-event-{i}",label=label))
+            rows.append(record(record_id=f"{label}-{i}",event_group_id=f"{label}-event-{i}",label=label,
+                               source_id=f"source-{label}-{i}", article_text=f"Independent report {label} {i}"))
     parts = split_grouped(rows)
     sets = {name: {r["event_group_id"] for r in part} for name, part in parts.items()}
     assert not (sets["train"] & sets["validation"])

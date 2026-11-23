@@ -8,13 +8,13 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import re
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlsplit
 
 from .candidate_import import ALLOWED_TYPES, canonical_source
+from .safe_xml import parse_xml
 
 MAX_FEED_BYTES = 2 * 1024 * 1024
 ALLOWED_HOST_ROOTS = (
@@ -63,13 +63,7 @@ def parse_feed_file(path: Path, collected_at: str | None = None) -> tuple[list[d
     if path.stat().st_size > MAX_FEED_BYTES:
         raise ValueError("Feed exceeds 2 MiB safety limit")
     raw = path.read_bytes()
-    # Reject entity expansion and external DTDs; ElementTree is not a hardened XML loader.
-    if re.search(br"<!\s*(?:DOCTYPE|ENTITY)\b", raw, re.IGNORECASE):
-        raise ValueError("DOCTYPE/ENTITY declarations not permitted")
-    try:
-        root = ET.fromstring(raw)
-    except ET.ParseError as exc:
-        raise ValueError(f"Invalid XML: {exc}") from exc
+    root = parse_xml(raw, MAX_FEED_BYTES)
     top = local_name(root.tag)
     if top == "rss":
         channel = next((x for x in root if local_name(x.tag) == "channel"), None)
