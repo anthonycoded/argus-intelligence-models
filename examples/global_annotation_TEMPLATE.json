@@ -1,0 +1,17 @@
+{
+  "record_id": "REPLACE-with-existing-source-record-id",
+  "source_id": "https://example.org/replace-with-source",
+  "event_group_id": "REPLACE-with-event-group",
+  "taxonomy_version": "aic-global-v1",
+  "annotation_status": "pending",
+  "reviewed_by": null,
+  "domains": ["defense"],
+  "defense_event_types": ["military_exercise"],
+  "countries": [{"code": "US", "role": "participant"}],
+  "organizations": [],
+  "event_location": null,
+  "event_date": null,
+  "evidence_status": "reported",
+  "evidence": [],
+  "rationale": "REPLACE with evidence-based draft rationale; not a training label."
+}

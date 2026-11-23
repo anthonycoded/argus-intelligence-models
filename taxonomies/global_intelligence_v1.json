@@ -1,0 +1,49 @@
+{
+  "taxonomy_id": "argus-global-intelligence",
+  "version": "aic-global-v1",
+  "description": "Global, geography-neutral, multi-domain intelligence taxonomy; defense event types are the first fully specified family.",
+  "domains": [
+    "defense",
+    "economics",
+    "geopolitics",
+    "cybersecurity",
+    "other"
+  ],
+  "defense_event_types": [
+    "combat_operation",
+    "military_deployment",
+    "military_exercise",
+    "weapons_procurement",
+    "defense_policy",
+    "military_diplomacy",
+    "military_technology",
+    "military_intelligence_surveillance"
+  ],
+  "entity_roles": [
+    "actor",
+    "target",
+    "host",
+    "participant",
+    "affected",
+    "mentioned"
+  ],
+  "annotation_statuses": [
+    "pending",
+    "human_verified"
+  ],
+  "evidence_statuses": [
+    "reported",
+    "independently_corroborated",
+    "disputed",
+    "unknown"
+  ],
+  "guidance": {
+    "defense": "Substantive armed-forces, defense-policy, military procurement, security cooperation, or military-intelligence developments in any country.",
+    "economics": "Economic policy, markets, trade, energy, sanctions, production or financial events; details to be expanded later.",
+    "geopolitics": "Diplomatic relationships, foreign policy, sovereignty and international institutional developments.",
+    "cybersecurity": "Cyberattacks, cyber defense, vulnerability exploitation, and cyber operations.",
+    "other": "No substantive event in the monitored intelligence domains.",
+    "multi_label": "Use every substantively evidenced domain and defense event type; do not force a single class.",
+    "no_inference": "Do not infer an event, country or actor only from a headline, background mention, or embedding similarity. Record uncertainty and source attribution."
+  }
+}
