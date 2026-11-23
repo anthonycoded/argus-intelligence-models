@@ -2,6 +2,12 @@
 
 Separate, local research workspace. Does not connect to or modify Argus-Core databases.
 
+The primary direction is worldwide, multi-domain intelligence classification,
+starting with defense versus nondefense. The [Phase 2M global review workflow](README_PHASE2M.md)
+registers topic-independent source revisions and creates versioned human approvals.
+Legacy Taiwan relevance remains a separate optional task. Global approvals do not
+automatically clear training rights or pass the existing topic-training manifest.
+
 ## Windows 11 / Command Prompt
 
 ```bat

@@ -1,0 +1,12 @@
+{
+  "source_id": "https://example.org/REPLACE-source-article",
+  "publisher": "REPLACE-publisher",
+  "adapter": "manual",
+  "article_title": "REPLACE-with-actual-title",
+  "published_at": null,
+  "published_at_raw": null,
+  "collected_at": "REPLACE-with-ISO8601-timestamp-with-timezone",
+  "content_type": "permitted_excerpt",
+  "rights_note": "REPLACE-with-accurate-content-handling-note; no training permission inferred",
+  "provenance_method": "human_supplied_content"
+}

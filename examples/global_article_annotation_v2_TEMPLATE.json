@@ -1,0 +1,15 @@
+{
+  "schema_version": "aic-global-annotation-v2",
+  "domains": [],
+  "defense_event_types": [],
+  "countries": [],
+  "organizations": [],
+  "event_date": null,
+  "event_location": null,
+  "evidence_status": "unknown",
+  "rationale": "REPLACE-after-reading-the-registered-content-and-policy",
+  "event_coverage": "not_enumerated",
+  "event_coverage_note": "REPLACE-with-explanation-of-article-only-or-event-enumeration-scope",
+  "events": [],
+  "evidence": []
+}
