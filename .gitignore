@@ -1,6 +1,9 @@
 .venv/
 .venv-argilla/
 data/argilla/
+data/review_dashboard/
+dashboard/node_modules/
+dashboard/dist/
 data/backups/
 # Generated research artifacts (already tracked files remain tracked).
 data/discovery/

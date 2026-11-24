@@ -1,5 +1,9 @@
 # Argus Intelligence Classifier (AIC-1) — Starter
 
+[Phase 2Q Review Dashboard](README_PHASE2Q.md): one local GUI for permitted source
+intake, human labels/evidence, immutable staging and explicit approval. Open
+http://127.0.0.1:6910 after starting the local services.
+
 Separate, local research workspace. Does not connect to or modify Argus-Core databases.
 
 The primary direction is worldwide, multi-domain intelligence classification,

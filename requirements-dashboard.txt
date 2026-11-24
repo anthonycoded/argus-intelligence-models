@@ -1,0 +1,5 @@
+# Runtime overlay for the existing isolated Argilla environment.
+-r requirements-argilla.txt
+fastapi==0.165.0
+uvicorn==0.38.0
+httpx==0.28.1
