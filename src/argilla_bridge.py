@@ -4,9 +4,11 @@ Single writer, append-only hashed bundles, no content retrieval, rights mutation
 model imports or inference. Argilla is a review UI, never a training input.
 """
 import argparse
+import json
 import os
+from copy import deepcopy
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import quote, urlsplit
 from uuid import UUID
 
 from .candidate_import import canonical_source
@@ -22,6 +24,7 @@ DEFAULT_ROOT = Path('data/argilla')
 QUESTION_NAMES = {'domains', 'defense_event_types', 'rationale', 'event_coverage', 'details', 'evidence_spans'}
 DETAIL_FIELDS = {'countries', 'organizations', 'event_date', 'event_location', 'evidence_status',
                  'event_coverage_note', 'events', 'evidence'}
+PRESENTATION = 'aic-argilla-content-view-v1'
 
 
 def _save(root, directory, obj, prefix):
@@ -66,7 +69,8 @@ def records(root):
     for path in sorted((Path(root) / 'records').glob('record-*/data.json')):
         ident = path.parent.name
         obj = _read(root, 'records', ident, 'record-')
-        keys(obj, {'candidate', 'source', 'contract_sha256', 'supersedes', 'fields', 'metadata'}, 'bridge record')
+        extra = {'presentation', 'prior_submissions'} if 'presentation' in obj else set()
+        keys(obj, {'candidate', 'source', 'contract_sha256', 'supersedes', 'fields', 'metadata'} | extra, 'bridge record')
         row = obj['candidate']
         if candidates.get(row['candidate_id']) != row or obj['contract_sha256'] != document_hash(context['contract']):
             raise ValueError('Candidate/contract binding mismatch')
@@ -75,7 +79,12 @@ def records(root):
             _match_source(row, ref)
         else:
             text = 'PENDING CONTENT: metadata only. Draft labels are not evidence. Attach a permitted representation before AIC-1 review.'
-        expected = _record(row, obj['source'], text, obj['supersedes'])
+        if extra:
+            if obj['presentation'] != PRESENTATION or obj['source'] is None:
+                raise ValueError('Unsupported content presentation')
+            expected = _content_record(root, row, obj['source'], text, obj['supersedes'], obj['prior_submissions'])
+        else:
+            expected = _record(row, obj['source'], text, obj['supersedes'])
         if obj != expected:
             raise ValueError('Record fields/content/metadata mismatch')
         result[ident] = obj
@@ -136,6 +145,41 @@ def _record(row, binding, text, supersedes=None):
             'supersedes': supersedes, 'fields': fields, 'metadata': metadata}
 
 
+def _content_record(root, row, binding, text, supersedes, prior_submissions):
+    """New representations only: archived Phase 2P records remain byte-identical."""
+    obj = _record(row, binding, text, supersedes)
+    context, _ = _context(root)
+    ref, _, actual = load_source(context['store'], binding['source_ref_id'])
+    if binding != actual or not isinstance(prior_submissions, list) or len(set(prior_submissions)) != len(prior_submissions):
+        raise ValueError('Invalid content view binding/history')
+    kind = ref['metadata']['content_type']
+    lines = ['CONTENT ATTACHED — RE-REVIEW REQUIRED',
+             'Representation: ' + kind + (' (reviewer-authored summary; not full article text)' if kind == 'human_summary' else ''),
+             'Publisher: ' + row['publisher'],
+             'Published: ' + str(row.get('published_at') or row.get('published_at_raw') or 'unknown'),
+             'Collected: ' + row['collected_at'],
+             'Handling basis: ' + ref['metadata']['rights_note'],
+             'Training rights: separate AIC-1 decision; attachment does not clear rights.',
+             'Source reference: ' + binding['source_ref_id'],
+             'Content SHA-256: ' + ref['content_revision_sha256'],
+             'Provenance ID: ' + ref['provenance_id'],
+             'Previous record (retained): ' + str(supersedes),
+             'Prior choices below remain on the original record. Re-select only after reading this representation.']
+    for ident in prior_submissions:
+        previous = _read(root, 'submissions', ident, 'submission-')
+        if previous['record_id'] != supersedes or previous['status'] != 'draft':
+            raise ValueError('Prior draft snapshot does not belong to the previous record')
+        lines += ['Prior draft author UUID: ' + previous['reviewer_id'],
+                  'Prior draft answers (not current labels/evidence): ' + encoded(previous['answers']).decode()]
+    obj['fields']['source'] = '[Open original publisher source](<' + quote(row['source_id'], safe=':/?&=%@+;,-._~') + '>)'
+    obj['fields']['context'] = '\n\n'.join(lines)
+    obj['fields']['guidance'] = ('Highlight support in the exact text. Use evidence CLI to map native spans to '
+        'AIC-1 Unicode offsets and UTF-8 byte ranges. Do not carry evidence across revisions. '
+        'The displayed representation may be a summary or excerpt, not the complete publisher article.\n\n' + obj['fields']['guidance'])
+    obj.update(presentation=PRESENTATION, prior_submissions=prior_submissions)
+    return obj
+
+
 def guidance(c):
     return ('Global article labels are separate from article-local event instances. Other is exclusive. '
             'Choose none for no defense events. Similarity/query hints are unverified, never labels. '
@@ -172,7 +216,7 @@ def dataset_name():
     return 'aic-global-v2-' + document_hash(contract())[:12]
 
 
-def attach(root, candidate_id, text_file, content_type, rights_note):
+def attach(root, candidate_id, text_file, content_type, rights_note, *, content_view=False):
     context, all_records, heads = records(root)
     if candidate_id not in heads:
         raise ValueError('Unknown candidate')
@@ -181,6 +225,8 @@ def attach(root, candidate_id, text_file, content_type, rights_note):
     string(rights_note, 'explicit handling basis')
     # Never infer authorship/permission from file presence or representation choice.
     raw = Path(text_file).read_bytes()
+    if not raw or len(raw) > 2*1024*1024 or not raw.decode('utf-8').strip():
+        raise ValueError('Content must be nonempty permitted UTF-8 text, at most 2 MiB')
     ident = 'src-' + document_hash([canonical_source(row['source_id']), digest(raw)])
     if not (Path(context['store']) / 'sources' / ident).exists():
         ident = prepare_review(context['sample'], candidate_id, Path(context['store']), text_file, content_type, rights_note)['source_ref_id']
@@ -192,14 +238,25 @@ def attach(root, candidate_id, text_file, content_type, rights_note):
         return previous
     if any(r['source'] == binding for r in all_records.values()):
         raise ValueError('Cannot restore a superseded representation as current')
-    return _save(root, 'records', _record(row, binding, text, previous), 'record-')
+    if content_view:
+        _, snapshot = _export_head(root)
+        prior = [] if snapshot is None else [ident for ident in snapshot['submissions']
+            if (lambda s: s['record_id'] == previous and s['status'] == 'draft')(_read(root, 'submissions', ident, 'submission-'))]
+        obj = _content_record(root, row, binding, text, previous, prior)
+    else:
+        obj = _record(row, binding, text, previous)
+    return _save(root, 'records', obj, 'record-')
 
 
-def settings(rg):
+def settings(rg, readable=False):
     c = contract()
     tax = c['documents']['taxonomy']
     return rg.Settings(guidelines=guidance(c),
-        fields=[rg.TextField(name=n, use_markdown=False) for n in ('title', 'source', 'context', 'text', 'guidance')],
+        fields=[rg.TextField(name=n, use_markdown=readable and n == 'source',
+                **({'title': {'title':'Article title', 'source':'Original publisher link',
+                              'context':'Source, provenance and prior draft', 'text':'Registered content — exact representation',
+                              'guidance':'Annotation guidance'}[n]} if readable else {}))
+                for n in ('title', 'source', 'context', 'text', 'guidance')],
         questions=[rg.MultiLabelQuestion(name='domains', labels=tax['domains']),
                    rg.MultiLabelQuestion(name='defense_event_types', labels=tax['defense_event_types']+['none']),
                    rg.TextQuestion(name='rationale'),
@@ -236,9 +293,34 @@ def setup(rg, client, workspace='aic1'):
     if dataset is None:
         dataset = rg.Dataset(name=dataset_name(), workspace=workspace, settings=expected, client=client).create()
     # Persisted contract in fields is checked on every import/export as well.
-    if _settings_signature(dataset.settings.serialize()) != _settings_signature(expected.serialize()):
+    if _settings_signature(dataset.settings.serialize()) not in [
+            _settings_signature(expected.serialize()), _settings_signature(settings(rg, True).serialize())]:
         raise ValueError('Existing Argilla dataset settings mismatch')
     return dataset
+
+
+def improve_ui(rg, dataset):
+    """Only field presentation changes; retain field/question IDs and all responses."""
+    expected = settings(rg, True)
+    for field in expected.fields:
+        current = dataset.settings.fields[field.name]
+        current.title = field.title
+        current.use_markdown = field.use_markdown
+        current.update()
+    dataset.settings.get()
+    if _settings_signature(dataset.settings.serialize()) != _settings_signature(expected.serialize()):
+        raise ValueError('Readable field settings update mismatch')
+    return {'dataset': dataset.name, 'field_presentation': 'readable', 'responses_modified': False}
+
+
+def attach_and_sync(root, dataset, rg, client, candidate_id, text_file, content_type, rights_note):
+    # Snapshot actual drafts first, without editing responses. Failure stops attachment.
+    export_responses(root, dataset, client)
+    record_id = attach(root, candidate_id, text_file, content_type, rights_note, content_view=True)
+    result = import_records(root, dataset, rg)
+    result.update(record_id=record_id, candidate_id=candidate_id, re_review_required=True,
+                  prior_draft_preserved=True)
+    return result
 
 
 def import_records(root, dataset, rg):
@@ -353,21 +435,105 @@ def _submission(root, ident):
     if item['source'] is None:
         raise ValueError('Pending content cannot be staged')
     ref, text = check_binding(context['store'], item['source'])
-    annotation = map_answers(obj['answers'], text, ref['content_revision_sha256'])
+    answers = obj['answers']
+    if item.get('presentation') == PRESENTATION:
+        answers = deepcopy(answers)
+        answers['evidence_spans'] = normalized_spans(text, answers.get('evidence_spans', []))
+    annotation = map_answers(answers, text, ref['content_revision_sha256'])
     return context, obj, item, annotation
 
 
+def span_offsets(text, start, end, unit='utf16'):
+    """Explicit half-open coordinates: browser UTF-16 -> Python Unicode -> UTF-8."""
+    if type(start) is not int or type(end) is not int or not 0 <= start < end:
+        raise ValueError('Invalid evidence span range')
+    if unit == 'utf16':
+        boundaries, offset = {0:0}, 0
+        for index, char in enumerate(text, 1):
+            offset += len(char.encode('utf-16-le'))//2
+            boundaries[offset] = index
+        if start not in boundaries or end not in boundaries:
+            raise ValueError('Span exceeds content or splits a UTF-16 surrogate pair')
+        start, end = boundaries[start], boundaries[end]
+    elif unit != 'codepoint':
+        raise ValueError('Unknown span coordinate unit')
+    if end > len(text):
+        raise ValueError('Evidence span exceeds registered text')
+    return {'start':start, 'end':end, 'quote':text[start:end],
+            'utf8_byte_start':len(text[:start].encode('utf-8')),
+            'utf8_byte_end':len(text[:end].encode('utf-8'))}
+
+
+def normalized_spans(text, spans):
+    if not isinstance(spans, list):
+        raise ValueError('Malformed native span collection')
+    result = []
+    for span in spans:
+        keys(span, {'start','end','label'}, 'native evidence span')
+        if span['label'] != 'support':
+            raise ValueError('Unknown native evidence label')
+        converted = span_offsets(text, span['start'], span['end'])
+        result.append({k:converted[k] for k in ('start','end')} | {'label':span['label']})
+    return result
+
+
+def evidence_from_span(root, submission_id, span_index, target, attribution):
+    """Map a real saved human highlight; no label, attribution or span is inferred."""
+    context, items, heads = records(root)
+    obj = _read(root, 'submissions', submission_id, 'submission-')
+    _, snapshot = _export_head(root)
+    if snapshot is None or submission_id not in snapshot['submissions']:
+        raise ValueError('Stale/withdrawn response; export current responses')
+    item = items.get(obj['record_id'])
+    if item is None or heads[item['candidate']['candidate_id']] != obj['record_id']:
+        raise ValueError('Stale representation; re-highlight current registered content')
+    if item['source'] is None:
+        raise ValueError('Pending/empty content cannot supply evidence')
+    if obj['status'] not in {'draft', 'submitted'}:
+        raise ValueError('Discarded responses cannot supply evidence')
+    ref, text = check_binding(context['store'], item['source'])
+    spans = obj['answers'].get('evidence_spans', [])
+    if not isinstance(spans, list) or type(span_index) is not int or not 0 <= span_index < len(spans):
+        raise ValueError('Select an existing saved evidence span index')
+    span = spans[span_index]
+    keys(span, {'start','end','label'}, 'native evidence span')
+    if span['label'] != 'support':
+        raise ValueError('Unknown native span label')
+    string(target, 'human-selected evidence target')
+    string(attribution, 'human-supplied attribution')
+    converted = span_offsets(text, span['start'], span['end'])
+    evidence = {'target':target,'content_revision_sha256':ref['content_revision_sha256'],
+                **{k:converted[k] for k in ('start','end','quote')},'attribution':attribution}
+    return {'record_id':obj['record_id'], 'reviewer_id':obj['reviewer_id'],
+            'native_offset_unit':'utf16', 'evidence':evidence,
+            'utf8_byte_range':{'start':converted['utf8_byte_start'],'end':converted['utf8_byte_end']},
+            'note':'Mapping only; the reviewer must check target, source support and complete annotation validity.'}
+
+
 def map_answers(answers, text, revision):
-    if not isinstance(answers, dict) or not QUESTION_NAMES-{'evidence_spans'} <= set(answers) or set(answers)-QUESTION_NAMES:
-        raise ValueError('Incomplete/unknown response fields')
-    details = parse_json(answers['details'])
-    keys(details, DETAIL_FIELDS, 'supplemental article/event form')
+    if not isinstance(answers, dict):
+        raise ValueError('Incomplete/unknown response fields: expected question answers as an object')
+    missing = sorted((QUESTION_NAMES-{'evidence_spans'})-set(answers))
+    if missing:
+        raise ValueError('Incomplete/unknown response fields: complete these Argilla questions: ' + ', '.join(missing))
+    if set(answers)-QUESTION_NAMES:
+        raise ValueError('Incomplete/unknown response fields: remove unsupported response questions')
+    details = parse_details(answers['details'])
     types = answers['defense_event_types']
     if not isinstance(types, list) or not types or ('none' in types and types != ['none']):
         raise ValueError('Select explicit none or defense categories, exclusively')
     annotation = {'schema_version': 'aic-global-annotation-v2', 'domains': answers['domains'],
                   'defense_event_types': [] if types == ['none'] else types,
                   'rationale': answers['rationale'], 'event_coverage': answers['event_coverage'], **details}
+    if answers['event_coverage'] == 'partial' and not details['events']:
+        raise ValueError('event_coverage: partial requires at least one instance in details.events. '
+                         'For article-level annotation without enumerated events, select not_enumerated '
+                         'and explain the scope in details.event_coverage_note; do not invent events.')
+    if not details['evidence']:
+        raise ValueError('details.evidence: nonempty source-grounded evidence required, including support for '
+                         'each selected domain. Highlight the registered text, save and export the response, '
+                         'then use argilla_bridge evidence to map the span to a claim target. '
+                         'Native highlights alone do not replace supplemental evidence.')
     c = contract()['documents']
     validate_article(annotation, c['taxonomy'], c['policy'], text, revision)
     spans = answers.get('evidence_spans', [])
@@ -379,6 +545,35 @@ def map_answers(answers, text, revision):
                 or not any((e['start'], e['end']) == (span['start'], span['end']) for e in annotation['evidence'])):
             raise ValueError('Native span must correspond to validated supplemental evidence')
     return annotation
+
+
+def parse_details(value):
+    """Actionable supplemental-form errors without echoing annotation text or keys."""
+    guide = 'Complete the structured form in examples/argilla_details_TEMPLATE.json and paste one JSON object into Argilla details.'
+    if not isinstance(value, str):
+        raise ValueError('details: expected JSON object text. ' + guide)
+    if not value.strip():
+        raise ValueError('details: empty or whitespace-only. ' + guide)
+    try:
+        details = parse_json(value)
+    except json.JSONDecodeError as exc:
+        raise ValueError(f'details: invalid JSON at line {exc.lineno}, column {exc.colno}. '
+                         'Prose and Markdown code fences are not JSON; use double-quoted field names. ' + guide) from None
+    except ValueError:
+        raise ValueError('details: invalid JSON; duplicate keys and non-finite numbers are forbidden. ' + guide) from None
+    if not isinstance(details, dict):
+        raise ValueError('details: expected one JSON object, not a list, scalar or null. ' + guide)
+    missing = sorted(DETAIL_FIELDS-set(details))
+    unexpected = len(set(details)-DETAIL_FIELDS)
+    if missing or unexpected:
+        reason = (' Missing required fields: ' + ', '.join(missing) + '.') if missing else ''
+        if unexpected:
+            reason += f' Remove {unexpected} unexpected field(s).'
+        raise ValueError('details: supplemental form fields do not match the schema.' + reason + ' ' + guide)
+    for field in ('countries','organizations','events','evidence'):
+        if not isinstance(details[field], list):
+            raise ValueError('details.' + field + ': expected a JSON array; use [] only when the schema permits no entries.')
+    return details
 
 
 def stage(root, submission_id, supersedes=None):
@@ -479,9 +674,19 @@ def main():
     attachment.add_argument('--text-file', type=Path, required=True)
     attachment.add_argument('--content-type', required=True)
     attachment.add_argument('--rights-note', required=True)
-    for name in ('setup', 'import', 'export'):
+    for name in ('setup', 'import', 'export', 'improve-ui', 'attach-sync'):
         remote = commands.add_parser(name)
         remote.add_argument('--workspace', default='aic1')
+        if name == 'attach-sync':
+            remote.add_argument('--candidate-id', required=True)
+            remote.add_argument('--text-file', type=Path, required=True)
+            remote.add_argument('--content-type', required=True)
+            remote.add_argument('--rights-note', required=True)
+    evidence = commands.add_parser('evidence')
+    evidence.add_argument('submission_id')
+    evidence.add_argument('--span-index', type=int, required=True)
+    evidence.add_argument('--target', required=True)
+    evidence.add_argument('--attribution', required=True)
     staging = commands.add_parser('stage')
     staging.add_argument('submission_id')
     staging.add_argument('--supersedes')
@@ -500,13 +705,20 @@ def main():
         if args.command == 'init':
             result = initialize(args.root, args.sample, args.store)
         elif args.command == 'attach':
-            result = {'record_id': attach(args.root, args.candidate_id, args.text_file, args.content_type, args.rights_note)}
-        elif args.command in {'setup', 'import', 'export'}:
+            result = {'record_id': attach(args.root, args.candidate_id, args.text_file, args.content_type, args.rights_note, content_view=True)}
+        elif args.command in {'setup', 'import', 'export', 'improve-ui', 'attach-sync'}:
             _context(args.root)
             rg, client = local_client()
             dataset = setup(rg, client, args.workspace)
-            result = {'dataset': dataset.name} if args.command == 'setup' else (
-                import_records(args.root, dataset, rg) if args.command == 'import' else export_responses(args.root, dataset, client))
+            if args.command == 'improve-ui':
+                result = improve_ui(rg, dataset)
+            elif args.command == 'attach-sync':
+                result = attach_and_sync(args.root, dataset, rg, client, args.candidate_id, args.text_file, args.content_type, args.rights_note)
+            else:
+                result = {'dataset': dataset.name} if args.command == 'setup' else (
+                    import_records(args.root, dataset, rg) if args.command == 'import' else export_responses(args.root, dataset, client))
+        elif args.command == 'evidence':
+            result = evidence_from_span(args.root, args.submission_id, args.span_index, args.target, args.attribution)
         elif args.command == 'stage':
             result = stage(args.root, args.submission_id, args.supersedes)
         elif args.command == 'review':

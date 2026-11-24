@@ -1,5 +1,8 @@
 # Phase 2P: self-hosted Argilla review
 
+For the current content-attachment and native evidence workflow, see
+[Phase 2P.1](README_PHASE2P1.md). This document retains the original Phase 2P run results.
+
 Argilla is a local review interface and staging source. Phase 2M remains the only
 global approval authority; Phase 2L/2N training, rights and dataset checks are
 unchanged. No real annotation is automatically submitted, reviewed or approved.

@@ -72,7 +72,13 @@ def submit(c, values=None, status='submitted', user=USER):
     remote.responses = Responses(SimpleNamespace(question_name=k, value=v, user_id=user, status=status)
                                  for k, v in (values or answers(c['annotation'])).items())
     ids = b.export_responses(c['bridge'], c['remote'], c['client'])['submissions']
-    return ids[-1]
+    # Content hashes are sorted for reproducible exports, not by recency. Select
+    # the intended record/author, regardless of JSON formatting/hash order.
+    matches = [ident for ident in ids
+               if b._read(c['bridge'], 'submissions', ident, 'submission-')['record_id'] == head
+               and b._read(c['bridge'], 'submissions', ident, 'submission-')['reviewer_id'] == user]
+    assert len(matches) == 1
+    return matches[0]
 
 
 def test_queue_init_and_import_idempotent_metadata_only(bridge):

@@ -19,6 +19,12 @@ with source coverage, reproducibility commands and human-review instructions.
 [Phase 2P](README_PHASE2P.md) adds a localhost Argilla 2.8 annotation interface and
 validated staging while retaining Phase 2M's explicit approval and rights boundary.
 
+[Phase 2P.1](README_PHASE2P1.md) adds draft-preserving content attachment, readable
+registered text and exact native-span evidence mapping.
+
+[Article review workflow](README_ARTICLE_REVIEW.md) records Article 001's staged
+draft and provides Article 002's independent intake and evidence-form commands.
+
 ## Windows 11 / Command Prompt
 
 ```bat
