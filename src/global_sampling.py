@@ -133,7 +133,7 @@ def load_sample(directory):
     return obj, expected
 
 
-def prepare_review(sample, candidate_id, store, text_file, content_type, rights_note):
+def prepare_review(sample, candidate_id, store, text_file, content_type, rights_note, *, representation_provenance=None):
     """Register human-supplied content and an intake receipt, with NO inferred labels."""
     manifest, selected = load_sample(sample)
     matches = [r for r in selected if r["candidate_id"] == candidate_id]
@@ -148,6 +148,7 @@ def prepare_review(sample, candidate_id, store, text_file, content_type, rights_
                 "article_title": row["article_title"], "published_at": row.get("published_at"), "published_at_raw": row.get("published_at_raw"),
                 "collected_at": row["collected_at"], "content_type": content_type, "rights_note": rights_note,
                 "provenance_method": "human_supplied_sampled_discovery"}
+    if representation_provenance is not None:metadata['representation_provenance']=representation_provenance
     ident = register_source(store, metadata, text_file)
     ref, _, binding = load_source(store, ident)
     receipt = {"schema_version": "aic-global-intake-v1", "state": "awaiting_human_global_draft", "source": binding,

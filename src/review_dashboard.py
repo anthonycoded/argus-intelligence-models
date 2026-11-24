@@ -66,7 +66,7 @@ def create_app(service=None,authenticator=None,*,origin='http://127.0.0.1:6910',
         except (ValueError,KeyError,TypeError) as exc:
             # Known validators use controlled schema messages; never expose a traceback.
             message=str(exc) if isinstance(exc,ValueError) else 'Malformed request fields. Reload and check the form.'
-            response=JSONResponse({'error':message},status_code=409 if any(w in message.lower() for w in ['stale','changed','supersed','already','reload']) else 422)
+            response=JSONResponse({'error':message,**({'fields':exc.fields} if hasattr(exc,'fields') else {})},status_code=409 if any(w in message.lower() for w in ['stale','changed','supersed','already','reload']) else 422)
         except OSError:
             response=JSONResponse({'error':'Local review store unavailable. Check permissions and reload; no approval was inferred.'},status_code=503)
         except Exception:
@@ -157,6 +157,27 @@ def create_app(service=None,authenticator=None,*,origin='http://127.0.0.1:6910',
             if service.sync is None:return {'synced':False,'message':'Argilla synchronization is not configured for this instance'}
             service.sync();return {'synced':True}
         raise HTTPException(404,'Unknown review action')
+
+    from .research_ledger import ResearchLedger
+    research=ResearchLedger(service.bridge_root,service.root/'research')
+
+    @app.get('/api/research')
+    def research_summary(request:Request):
+        session(request)
+        with service.lock:return research.summary()
+
+    @app.post('/api/research/{action}')
+    async def research_action(action:str,request:Request):
+        actor=session(request,True)['actor'];body=await request.json()
+        with service.lock:
+            if action=='capture':return {'event_id':research.capture(actor,body['expected_head'],body['request_id'])}
+            if action=='quality':return {'event_id':research.quality(body,actor)}
+            if action=='experiment':return research.experiment(body,actor)
+            if action=='preview':return research.preview(body['experiment_id'],actor,body['expected_head'],body['request_id'])
+            if action=='validate-plan':return research.validate_plan(body['plan_id'])
+            if action=='result':return {'event_id':research.result(body,actor)}
+            if action=='export':return research.export_real(body,actor)
+            raise HTTPException(404,'Unsupported research action; no training or rights endpoints exist')
 
     static_dir=Path(static_dir or Path(__file__).resolve().parents[1]/'dashboard/dist')
     if static_dir.exists():

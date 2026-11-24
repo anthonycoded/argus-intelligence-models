@@ -71,6 +71,14 @@ import, uses train/validation only for learning and selection, and loads weights
 locally without downloading them.
 
 ## Dataset rules
+
+For dashboard persistence repairs, compact forms and transparent AI-assisted
+representation intake, see [Phase 2Q.1](README_PHASE2Q1.md).
+
+For the global human-review dataset, use the [Phase 2R GUI-first research and
+quality workflow](README_PHASE2R.md). Its metadata previews and isolated synthetic
+fixtures are separate from the legacy topic-conditioned training schema below.
+
 - Exactly one JSON object per line, UTF-8.
 - `label`: `unrelated`, `partially_relevant`, `relevant`.
 - `label_source`: must be `human_verified` for training.

@@ -10,7 +10,7 @@ from .global_io import (digest, document_hash, encoded, hash_string, identifier,
 from .government_sources import allowed_url
 from .news_feeds import permitted_url
 
-REPRESENTATIONS = ALLOWED_TYPES | {"reported_full_text"}
+REPRESENTATIONS = ALLOWED_TYPES | {"reported_full_text", "ai_assisted_summary"}
 METADATA_FIELDS = {"source_id", "publisher", "adapter", "article_title", "published_at",
                    "published_at_raw", "collected_at", "content_type", "rights_note", "provenance_method"}
 REFERENCE_FIELDS = {"schema_version", "source_ref_id", "metadata", "canonical_source_id",
@@ -48,7 +48,8 @@ def validate_source_url(url, adapter):
 
 
 def validate_metadata(metadata):
-    keys(metadata, METADATA_FIELDS, "content metadata")
+    ai=isinstance(metadata,dict) and metadata.get('content_type')=='ai_assisted_summary'
+    keys(metadata, METADATA_FIELDS | ({'representation_provenance'} if ai else set()), "content metadata")
     for field in METADATA_FIELDS - {"published_at", "published_at_raw"}:
         string(metadata[field], field)
     validate_source_url(metadata["source_id"], metadata["adapter"])
@@ -62,6 +63,9 @@ def validate_metadata(metadata):
         string(metadata["published_at_raw"], "published_at_raw")
     if metadata["content_type"] not in REPRESENTATIONS:
         raise ValueError("Unsupported content representation; metadata alone is not source content")
+    if ai:
+        from .representation_policy import validate_origin
+        validate_origin(metadata['representation_provenance'],metadata['source_id'])
     return metadata
 
 
@@ -91,13 +95,17 @@ def register_source(root, metadata, text_file, discovery=None):
     if not text.strip("\ufeff \r\n\t"):
         raise ValueError("Empty source content")
     canonical, revision = canonical_source(metadata["source_id"]), digest(raw)
+    ai=metadata['content_type']=='ai_assisted_summary'
+    if ai:
+        from .representation_policy import check_original
+        check_original(root,metadata)
     ident = _source_id(canonical, revision)
-    prov = {"schema_version": "aic-global-provenance-v1", "canonical_source_id": canonical,
+    prov = {"schema_version": "aic-global-provenance-v2" if ai else "aic-global-provenance-v1", "canonical_source_id": canonical,
             "content_revision_sha256": revision, "metadata_sha256": document_hash(metadata),
             "content_type": metadata["content_type"], "rights_status": "unverified",
             "rights_note": metadata["rights_note"], "method": metadata["provenance_method"], "discovery": discovery}
     prov["provenance_id"] = "prov-" + document_hash(prov)
-    reference = {"schema_version": "aic-content-reference-v1", "source_ref_id": ident, "metadata": metadata,
+    reference = {"schema_version": "aic-content-reference-v2" if ai else "aic-content-reference-v1", "source_ref_id": ident, "metadata": metadata,
                  "canonical_source_id": canonical, "content_revision_sha256": revision,
                  "duplicate_fingerprint": fingerprint(text), "provenance_id": prov["provenance_id"],
                  "provenance_sha256": digest(encoded(prov))}
@@ -106,12 +114,19 @@ def register_source(root, metadata, text_file, discovery=None):
     return ident
 
 
-def load_source(root, ident):
+def load_source(root, ident, *, _ancestors=None):
     identifier(ident, "src-")
+    ancestors=set(_ancestors or ())
+    if ident in ancestors or len(ancestors)>=32:raise ValueError('Cyclic or excessive original representation ancestry')
+    ancestors.add(ident)
     directory = Path(root) / "sources" / ident
     ref = read_object(directory / "reference.json")
     keys(ref, REFERENCE_FIELDS, "content reference")
     validate_metadata(ref["metadata"])
+    ai=ref['metadata']['content_type']=='ai_assisted_summary'
+    if ai:
+        from .representation_policy import check_original
+        check_original(root,ref['metadata'],ancestors)
     raw = (directory / "content.utf8").read_bytes()
     if not raw or len(raw) > 2 * 1024 * 1024:
         raise ValueError("Invalid stored content size")
@@ -121,10 +136,10 @@ def load_source(root, ident):
     keys(prov, PROVENANCE_FIELDS, "global provenance")
     _validate_discovery(prov["discovery"], ref["metadata"])
     prov_body = {k: v for k, v in prov.items() if k != "provenance_id"}
-    if (ref["schema_version"] != "aic-content-reference-v1" or ref["source_ref_id"] != ident
+    if (ref["schema_version"] != ("aic-content-reference-v2" if ai else "aic-content-reference-v1") or ref["source_ref_id"] != ident
             or ref["canonical_source_id"] != canonical or ref["content_revision_sha256"] != digest(raw)
             or ident != _source_id(canonical, digest(raw)) or ref["duplicate_fingerprint"] != fingerprint(text)
-            or prov["schema_version"] != "aic-global-provenance-v1" or prov["rights_status"] != "unverified"
+            or prov["schema_version"] != ("aic-global-provenance-v2" if ai else "aic-global-provenance-v1") or prov["rights_status"] != "unverified"
             or prov["canonical_source_id"] != canonical or prov["content_revision_sha256"] != digest(raw)
             or prov["metadata_sha256"] != document_hash(ref["metadata"])
             or prov["content_type"] != ref["metadata"]["content_type"]

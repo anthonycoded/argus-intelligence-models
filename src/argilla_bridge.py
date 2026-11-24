@@ -165,6 +165,13 @@ def _content_record(root, row, binding, text, supersedes, prior_submissions):
              'Provenance ID: ' + ref['provenance_id'],
              'Previous record (retained): ' + str(supersedes),
              'Prior choices below remain on the original record. Re-select only after reading this representation.']
+    if kind=='ai_assisted_summary':
+        origin=ref['metadata']['representation_provenance']
+        lines += ['AI-assisted text; not verified publisher text or human-authored prose.',
+                  'Declared generation method: '+origin['generation_method'],
+                  'Declared editing/review: '+origin['human_editing_status']+' / '+origin['human_review_status'],
+                  'Model/provider (when known): '+str(origin['model_name'])+' / '+str(origin['model_provider']),
+                  'Representation policy: '+origin['policy_version']+' / '+origin['policy_sha256']]
     for ident in prior_submissions:
         previous = _read(root, 'submissions', ident, 'submission-')
         if previous['record_id'] != supersedes or previous['status'] != 'draft':
@@ -216,7 +223,7 @@ def dataset_name():
     return 'aic-global-v2-' + document_hash(contract())[:12]
 
 
-def attach(root, candidate_id, text_file, content_type, rights_note, *, content_view=False):
+def attach(root, candidate_id, text_file, content_type, rights_note, *, content_view=False, representation_provenance=None):
     context, all_records, heads = records(root)
     if candidate_id not in heads:
         raise ValueError('Unknown candidate')
@@ -229,10 +236,12 @@ def attach(root, candidate_id, text_file, content_type, rights_note, *, content_
         raise ValueError('Content must be nonempty permitted UTF-8 text, at most 2 MiB')
     ident = 'src-' + document_hash([canonical_source(row['source_id']), digest(raw)])
     if not (Path(context['store']) / 'sources' / ident).exists():
-        ident = prepare_review(context['sample'], candidate_id, Path(context['store']), text_file, content_type, rights_note)['source_ref_id']
+        options={} if representation_provenance is None else {'representation_provenance':representation_provenance}
+        ident = prepare_review(context['sample'], candidate_id, Path(context['store']), text_file, content_type, rights_note,**options)['source_ref_id']
     ref, text, binding = load_source(context['store'], ident)
     _match_source(row, ref)
-    if ref['metadata']['content_type'] != content_type or ref['metadata']['rights_note'] != rights_note:
+    if (ref['metadata']['content_type'] != content_type or ref['metadata']['rights_note'] != rights_note
+        or ref['metadata'].get('representation_provenance')!=representation_provenance):
         raise ValueError('Existing representation has a different handling assertion')
     if all_records[previous]['source'] == binding:
         return previous

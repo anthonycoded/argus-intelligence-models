@@ -1,0 +1,9 @@
+{
+  "policy_version": "aic-representations-v2",
+  "ai_origin_schema": "aic-ai-summary-origin-v1",
+  "guidance": "AI-assisted text is an unverified representation, not publisher text or human-authored prose. Source rights, annotation approval and quality acceptance remain independent. No automatic model calls or factual verification are implied.",
+  "generation_methods": ["ai_generated", "ai_generated_human_edited"],
+  "human_editing_statuses": ["unedited", "edited"],
+  "human_review_statuses": ["not_reviewed", "reviewed"],
+  "leakage_patterns": ["no defense[- ]related event", "\\bnondefense\\b", "classified as", "(?:domain|event category|label)\\s*[:=]", "expected (?:domain|label|category)", "underlying objective is social welfare"]
+}

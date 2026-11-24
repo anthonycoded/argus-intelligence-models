@@ -87,6 +87,14 @@ def test_metadata_to_human_approval_in_browser(dashboard,monkeypatch,tmp_path):
             page.get_by_role('button',name='Next article',exact=True).click()
             expect(page.get_by_role('heading',name='Zeta independent next item',exact=True)).to_be_visible()
             expect(page.get_by_label('Article domain economics',exact=True)).not_to_be_checked()
+            page.get_by_role('button',name='Dataset Quality',exact=True).click()
+            expect(page.get_by_role('heading',name='Dataset Quality',exact=True)).to_be_visible()
+            expect(page.get_by_text('Approved: 1',exact=True)).to_be_visible()
+            expect(page.get_by_text('Rights-eligible: 0',exact=True)).to_be_visible()
+            page.get_by_role('button',name='Capture inventory',exact=True).click()
+            expect(page.get_by_role('status')).to_contain_text('Technical inventory snapshot recorded')
+            page.get_by_role('button',name='Article review',exact=True).click()
+            expect(page.get_by_role('heading',name='Zeta independent next item',exact=True)).to_be_visible()
             assert not errors,errors
             browser.close()
     finally:

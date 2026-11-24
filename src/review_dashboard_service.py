@@ -16,6 +16,11 @@ from .global_io import document_hash, encoded, identifier, keys, now, publish_di
 from .global_review import create_draft, load_draft, approve, history, eligibility_report, _family
 
 
+class ReviewValidationError(ValueError):
+    def __init__(self,message,fields):
+        super().__init__(message);self.fields=fields
+
+
 def empty_annotation():
     return {'schema_version':'aic-global-annotation-v2','domains':[],'defense_event_types':[],
             'countries':[],'organizations':[],'event_date':None,'event_location':None,
@@ -130,34 +135,76 @@ class ReviewService:
         annotation=empty_annotation();receipts=[];supersedes=None;stale_work=False
         if work_id:
             work=versions[work_id];stale_work=work['record_id']!=record
-            if not stale_work:
-                annotation=work['annotation'];receipts=work['evidence_receipts'];supersedes=work['supersedes']
+            annotation=deepcopy(work['annotation']);supersedes=work['supersedes']
+            if stale_work:annotation['evidence']=[]
+            else:receipts=work['evidence_receipts']
         current_approved=approval is not None and approval['source']==item['source']
+        amendment_work=None
+        if current_approved and work_id and not stale_work and versions[work_id]['supersedes']==approval['approval_id']:
+            amendment_work={'work_id':work_id,**versions[work_id]}
         if current_approved:
             annotation=approval['annotation'];receipts=[]
+        from .representation_policy import leakage_flags
         return {'candidate_id':candidate,'record_id':record,'metadata':item['candidate'],
+            'representation_warnings':leakage_flags(text),
             'source':item['source'],'reference':ref,'text':text,'annotation':annotation,
             'evidence_receipts':receipts,'work_id':work_id,'stale_work':stale_work,
+            'recoverable_work':{'work_id':work_id,**versions[work_id]} if stale_work else None,
+            'amendment_work':amendment_work,
             'stage':self.existing_stage(candidate,actor,work_id) if not stale_work and not current_approved else None,
             'supersedes':supersedes,'approval':approval,'current_approved':current_approved,
             'documents':bridge.contract()['documents'],'documents_hash':document_hash(bridge.contract()['documents'])}
 
     def attach(self,candidate,actor,body):
         with self.lock:
-            self.context(candidate,body['record_id'])
-            keys(body,{'record_id','text','content_type','handling_basis'},'source intake')
+            optional=set(body)&{'request_id','representation_provenance'}
+            keys(body,{'record_id','text','content_type','handling_basis'}|optional,'source intake')
+            request_id=body.get('request_id')
+            if request_id is not None:
+                UUID(request_id)
+                directory=self.root/'operations'
+                for entry in sorted(directory.iterdir()) if directory.exists() else []:
+                    operation=self.read_artifact('operations','operation-',entry.name)
+                    if operation['request_id']==request_id and operation['actor_id']==actor['id']:
+                        if operation['request_sha256']!=document_hash(body) or operation['candidate_id']!=candidate:
+                            raise ValueError('Attachment request identity reused with different input')
+                        current=self.candidate(candidate,actor)
+                        if current['record_id']!=operation['record_id']:raise ValueError('Stale attachment retry; current source has changed')
+                        return {'candidate':current,'sync_warning':None,'replayed':True}
             string(body['handling_basis'],'handling basis')
             text=body['text']
             if not isinstance(text,str) or not text.strip() or len(text.encode('utf-8'))>2*1024*1024:
                 raise ValueError('Supply nonempty permitted UTF-8 text, at most 2 MiB')
+            context,current,item,_,_=self.context(candidate)
+            origin=None
+            if body['content_type']=='ai_assisted_summary':
+                from .representation_policy import origin_document,ORIGIN_FIELDS
+                values=body.get('representation_provenance')
+                keys(values,ORIGIN_FIELDS-{'schema_version','policy_version','policy_sha256'},'AI origin declarations')
+                origin=origin_document(values)
+            elif body.get('representation_provenance') is not None:raise ValueError('AI origin must not be attached to a human/publisher representation')
+            if body['record_id']!=current:
+                # Recover an interrupted, otherwise identical attachment only.
+                from .global_io import digest
+                _,records,_=self.context()
+                old=records.get(body['record_id'])
+                ref=check_binding(context['store'],item['source'])[0] if item['source'] else None
+                if (request_id is None or old is None or old['candidate']['candidate_id']!=candidate or ref is None
+                    or ref['content_revision_sha256']!=digest(text.encode('utf-8'))
+                    or ref['metadata']['content_type']!=body['content_type'] or ref['metadata']['rights_note']!=body['handling_basis']
+                    or ref['metadata'].get('representation_provenance')!=origin):
+                    raise ValueError('Stale source revision. Reload before attaching changed content.')
             # Paths are server-generated; never use a browser-provided filesystem path.
             import tempfile
             self.root.mkdir(parents=True,exist_ok=True)
             with tempfile.TemporaryDirectory(prefix='intake-',dir=self.root) as directory:
                 path=Path(directory)/'content.utf8';path.write_bytes(text.encode('utf-8'))
-                ident=bridge.attach(self.bridge_root,candidate,path,body['content_type'],body['handling_basis'],content_view=True)
+                ident=bridge.attach(self.bridge_root,candidate,path,body['content_type'],body['handling_basis'],content_view=True,representation_provenance=origin)
             self.save_artifact('intake','intake-',{'candidate_id':candidate,'record_id':ident,
                 'actor':actor,'at':now(),'content_type':body['content_type'],'handling_basis':body['handling_basis']})
+            if request_id is not None:
+                self.save_artifact('operations','operation-',{'request_id':request_id,'actor_id':actor['id'],
+                    'candidate_id':candidate,'record_id':ident,'request_sha256':document_hash(body)})
             warning=None
             if self.sync:
                 try:self.sync()
@@ -214,7 +261,16 @@ class ReviewService:
         with self.lock:
             context,record,item,ref,text=self.context(candidate,body['record_id'])
             versions,head=self.working_history(candidate,actor)
-            if body.get('work_id')!=head:raise ValueError('Stale working draft. Reload before saving; your browser edits have not been overwritten.')
+            request_id=body.get('request_id')
+            if request_id is not None:
+                UUID(request_id);directory=self.root/'operations'
+                for entry in sorted(directory.iterdir()) if directory.exists() else []:
+                    operation=self.read_artifact('operations','operation-',entry.name)
+                    if operation['request_id']==request_id and operation['actor_id']==actor['id']:
+                        if (operation.get('kind')!='save' or operation['request_sha256']!=document_hash(body)
+                            or operation['candidate_id']!=candidate):raise ValueError('Save request identity reused with different input')
+                        if operation['work_id']!=head:raise ValueError('Stale save retry; a newer working version exists')
+                        return {'work_id':head}
             annotation=deepcopy(body['annotation']);self.shape(annotation)
             self.check_evidence(candidate,actor,record,item,annotation,body['evidence_receipts'])
             approval=self.approval_head(context,item)
@@ -225,12 +281,19 @@ class ReviewService:
             if head:
                 old=versions[head]
                 if all(old[k]==v for k,v in {'record_id':record,'annotation':annotation,
-                    'evidence_receipts':body['evidence_receipts'],'supersedes':supersedes}.items()):return {'work_id':head}
+                    'evidence_receipts':body['evidence_receipts'],'supersedes':supersedes}.items()) and body.get('work_id')==head:
+                    if request_id is not None:self.save_artifact('operations','operation-',{'kind':'save','request_id':request_id,
+                        'actor_id':actor['id'],'candidate_id':candidate,'record_id':record,'work_id':head,'request_sha256':document_hash(body)})
+                    return {'work_id':head}
+            if body.get('work_id')!=head:raise ValueError('Stale working draft. Reload before saving; your browser edits have not been overwritten.')
             work={'candidate_id':candidate,'record_id':record,'source':item['source'],
                 'documents_hash':document_hash(bridge.contract()['documents']),'actor':actor,
                 'annotation':annotation,'evidence_receipts':body['evidence_receipts'],
                 'supersedes':supersedes,'parent':head,'at':now()}
-            return {'work_id':self.save_artifact('work','work-',work)}
+            work_id=self.save_artifact('work','work-',work)
+            if request_id is not None:self.save_artifact('operations','operation-',{'kind':'save','request_id':request_id,
+                'actor_id':actor['id'],'candidate_id':candidate,'record_id':record,'work_id':work_id,'request_sha256':document_hash(body)})
+            return {'work_id':work_id}
 
     def validated_work(self,candidate,actor,work_id):
         work=self.read_artifact('work','work-',work_id)
@@ -248,7 +311,22 @@ class ReviewService:
 
     def validate(self,candidate,actor,body):
         with self.lock:
-            self.validated_work(candidate,actor,body['work_id'])
+            try:self.validated_work(candidate,actor,body['work_id'])
+            except ValueError as exc:
+                work=self.read_artifact('work','work-',body['work_id'])
+                if work['actor']['id']!=actor['id'] or work['candidate_id']!=candidate:raise
+                a=work['annotation'];fields=[]
+                if 'evidence' in str(exc).lower():
+                    covered={e['target'] for e in a['evidence']}
+                    fields=[{'path':target,'message':'Select exact registered text supporting this claim.'} for target in sorted(evidence_targets(a)-covered)]
+                if not fields:
+                    names=[name for name in ('domains','defense_event_types','countries','organizations','event_date','event_location','evidence_status','rationale','event_coverage_note','event_coverage') if name in str(exc)]
+                    if str(exc).startswith('Defense requires'):names=['defense_event_types']
+                    elif 'other is exclusive' in str(exc):names=['domains']
+                    elif 'country' in str(exc).lower() or 'ISO' in str(exc):names=['countries']
+                    elif any(term in str(exc) for term in ('event coverage','partial coverage','not_enumerated')):names=['event_coverage']
+                    fields=[{'path':'/'+(names[0] if names else 'evidence'),'message':str(exc)}]
+                raise ReviewValidationError(str(exc),fields) from exc
             return {'valid':True,'message':'Annotation and exact source evidence validated. Rights remain separate.'}
 
     def submit(self,candidate,actor,body):

@@ -1,0 +1,21 @@
+{
+  "schema_version": "aic-education-starter-config-v1",
+  "workflow": "synthetic_dry_run_only",
+  "fixture_directory": "data/educational_runs/phase2r-v1",
+  "seed": 42,
+  "task": "defense_vs_nondefense",
+  "labels": ["nondefense", "defense"],
+  "model_loading_allowed_in_phase2r": false,
+  "training_allowed_in_phase2r": false,
+  "future_user_loop_suggestions": {
+    "framework": "pytorch_or_huggingface",
+    "device": "cpu",
+    "batch_size": 8,
+    "max_length": 256,
+    "epochs": 1,
+    "weights": "user_supplied_local_directory_only",
+    "evaluation": ["precision", "recall", "f1", "confusion_matrix"],
+    "report_seed_environment_config_and_dataset_hash": true
+  },
+  "limitations": "Synthetic targets are authored fixture targets, not human global approvals. This deliberately simple fixture measures software plumbing, never real intelligence quality. No training loop is provided or executed."
+}

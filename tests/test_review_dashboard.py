@@ -152,6 +152,9 @@ def test_approval_requires_explicit_amendment_and_retains_history(dashboard):
     a['rationale']='An explicitly revised human rationale'
     assert save(c,article,a,receipts,work).status_code in (409,422)
     saved=save(c,article,a,receipts,work,approval['approval_id']);assert saved.status_code==200
+    resumed=item(c)['amendment_work']
+    assert resumed['annotation']==a and resumed['evidence_receipts']==receipts
+    assert resumed['work_id']==saved.json()['work_id']
     second=request(c,'submit',saved.json());assert second.status_code==200,second.text
     inspect2=request(c,'inspect',second.json()).json()
     assert request(c,'approve',{**second.json(),'inspection_token':inspect2['inspection_token'],'confirm_human_review':True}).status_code==200
