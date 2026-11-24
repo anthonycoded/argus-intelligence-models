@@ -147,7 +147,7 @@ to preserve an existing valid structured form instead.
 ```powershell
 $prepared = .\.venv-argilla\Scripts\python.exe -B -m src.argilla_details prepare SAVED_SUBMISSION_ID --span-target '0=/domains/0' --attribution 'REPLACE with your actual source attribution' --new-article-template --scope-note 'REPLACE with your actual article/event scope explanation' --output data/argilla/article002_details_v001 --confirm-evidence-mapping | ConvertFrom-Json
 if ($LASTEXITCODE -ne 0) { throw 'Details preparation failed; correct the indicated field or mapping' }
-Get-Content -LiteralPath $prepared.details_file -Raw | Set-Clipboard
+./deploy/argilla/Copy-Details.ps1 -ContentPath $prepared.details_file
 ```
 
 Inspect the generated proposal, then paste the clipboard into Argilla's details
@@ -194,3 +194,79 @@ guide, fixed the test-only selection helper in `tests/test_argilla_bridge.py`, a
 linked the guide from README.md. Earlier uncommitted integration work was preserved.
 Generated data remains ignored. Nothing was staged or committed; no approval,
 rights clearance, model training or Argus repository modification was performed.
+
+## Article 002: audited quote-encoding repair
+
+Later verification found Article 002's human submission
+`submission-531f1c8108a03867dfdd85a3e1d0ec924501fd8b6279002ee6a7770553048859`
+had correct native ranges and content hash, but its first supplemental quote had
+an exact reversible UTF-8-as-CP1252 transcription. U+2019 became the three code
+points U+00E2, U+20AC, U+2122. This made the stored quote 177 characters instead
+of the registered span's 175. The second supplemental quote was already exact.
+
+| Evidence | Correct Unicode/UTF-16 range | Corresponding UTF-8 byte range |
+| --- | --- | --- |
+| `/domains/0` | 205–380 | 205–382 |
+| `/defense_event_types/0` | 381–591 | 383–593 |
+
+The offsets must **not** be changed to byte positions. The original failure was
+quote mojibake, not incorrect native coordinates. The prior clipboard example used
+`Get-Content -Raw` without an explicit encoding, which is unsafe in Windows
+PowerShell 5.1. That documented workflow is now replaced by `Copy-Details.ps1`,
+which strictly decodes UTF-8 before copying Unicode text. For a direct equivalent,
+use `Get-Content -LiteralPath PATH -Raw -Encoding UTF8 | Set-Clipboard`.
+Do not copy evidence JSON through an unknown console/file encoding.
+
+The explicit opt-in repair is restricted to quotes whose original content hash
+and coordinates match saved native highlights and whose stored text is **exactly**
+the registered quote encoded as UTF-8 then decoded as CP1252. Both the forward and
+reverse conversion must match; no replacement-character decoding, smart-quote
+normalization, arbitrary transcription correction or new target choice is allowed.
+The default strict validator is unchanged. The audited projection restores only
+`/evidence/0/quote`; both original human highlights and submissions are preserved.
+
+The completed operation is safe to repeat:
+
+```powershell
+.\.venv-argilla\Scripts\python.exe -B -m src.argilla_details stage-existing submission-531f1c8108a03867dfdd85a3e1d0ec924501fd8b6279002ee6a7770553048859 --repair-quote-encoding
+```
+
+Validated Phase 2M draft:
+
+```text
+draft-ef15c772b1b55e3faefe1d731048606bb6ae715151363a379cb05399ad654662
+```
+
+Final human inspection command:
+
+```powershell
+.\.venv-argilla\Scripts\python.exe -B -m src.global_review review draft-ef15c772b1b55e3faefe1d731048606bb6ae715151363a379cb05399ad654662
+```
+
+No human approval was executed. The existing defense and military_technology
+selections, not_enumerated scope, rationale and all other fields were retained.
+Source SHA-256 remains
+`5f66543ce4474a8f72ad51520b61ef428248e6da6646a7116198ad4a5f73f38a`.
+The receipt is
+`data/argilla/evidence-projections/projection-7f16f4007d70564cd52c2f825bb7b7577d474846b0e36e43839191392c8366cc/receipt.json`.
+Its single change entry records the original/corrected quote hashes and unchanged
+target, attribution, offsets and content identity. An original default staging
+attempt still rejects the original corrupted quote; use the audited projection
+rather than weakening evidence validation or rewriting history.
+
+The current live response still matched the original export after staging. All
+76 protected artifacts matched their pre-repair hashes. There is now **1 existing
+global approval** (pre-existing this repair), **0 eligible global examples**, and
+Article 002 rights remain **unverified**. Earlier sections retain their original
+run counts. The local repair report is `data/argilla/article002_repair_report.json`.
+
+Repair tests: **101 focused tests passed in 12.36 seconds**; full suite
+**463 passed, 1 skipped in 116.07 seconds**, including 10 new regression cases.
+The existing optional Docker smoke was skipped. Windows PowerShell tests mocked
+the clipboard and verified exact Unicode transfer plus invalid UTF-8 rejection;
+they did not change the real clipboard or persistent execution policy. Other cases
+cover idempotency, preserving reviewer fields/responses, stale hashes, byte-offset
+confusion, arbitrary quote mismatches and absent highlights. Four files changed:
+`src/argilla_details.py`, `deploy/argilla/Copy-Details.ps1`,
+`tests/test_argilla_quote_encoding.py` and this guide. No artifacts or secrets were
+staged or committed.

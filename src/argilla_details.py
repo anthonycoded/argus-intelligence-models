@@ -78,6 +78,40 @@ def _projection(answers, details, spans, text, revision):
     return annotation, selected, unassigned
 
 
+def repair_quote_encoding(details, spans, text, revision):
+    """Only reverse an exact UTF-8-as-CP1252 transcription, never guess new evidence."""
+    corrected=deepcopy(details)
+    positions={(s['start'],s['end']) for s in spans}
+    changes=[]
+    for index,entry in enumerate(corrected['evidence']):
+        if not isinstance(entry,dict):
+            raise ValueError('Malformed evidence object')
+        start,end=entry.get('start'),entry.get('end')
+        if type(start) is not int or type(end) is not int or (start,end) not in positions:
+            raise ValueError('Encoding repair requires exact saved highlight coordinates')
+        if entry.get('content_revision_sha256')!=revision:
+            raise ValueError('Encoding repair cannot change or bypass a stale content hash')
+        expected=text[start:end]
+        stored=entry.get('quote')
+        if stored==expected:
+            continue
+        if not isinstance(stored,str):
+            raise ValueError('Encoding repair requires a saved quote string')
+        try:
+            forward=expected.encode('utf-8').decode('cp1252')
+            reverse=stored.encode('cp1252').decode('utf-8')
+        except UnicodeError:
+            raise ValueError('Quote mismatch is not the supported reversible encoding error; reviewer correction required') from None
+        if forward!=stored or reverse!=expected:
+            raise ValueError('Quote mismatch is not an exact UTF-8-as-CP1252 transcription; reviewer correction required')
+        entry['quote']=expected
+        changes.append({'path':f'/evidence/{index}/quote','repair':'reverse_exact_utf8_misdecoded_as_cp1252',
+                        'start':start,'end':end,'old_quote_sha256':document_hash(stored),
+                        'corrected_quote_sha256':document_hash(expected),
+                        'target_offsets_hash_and_attribution_unchanged':True})
+    return corrected,changes
+
+
 def prepare_details(root, submission_id, mappings, attribution, output, *,
                     confirm=False, new_article_template=False, scope_note=None):
     """Human-confirmed target choices -> exact evidence JSON; output only, no API writes."""
@@ -125,7 +159,7 @@ def prepare_details(root, submission_id, mappings, attribution, output, *,
             'unassigned_span_indexes':unassigned,'state':'proposal_only_no_responses_written'}
 
 
-def stage_existing_evidence(root, submission_id):
+def stage_existing_evidence(root, submission_id, *, repair_encoding=False):
     """Stage submitted target mappings unchanged; retain unused highlights in an audit.
 
 This explicit path does not weaken the legacy all-highlights staging check. It
@@ -134,11 +168,17 @@ field. It never assigns a target or attribution to an unassigned highlight.
 """
     context,obj,item,ref,text,spans=saved_response(root,submission_id,submitted=True)
     details=bridge.parse_details(obj['answers'].get('details'))
+    changes=[]
+    if repair_encoding:
+        details,changes=repair_quote_encoding(details,spans,text,ref['content_revision_sha256'])
     annotation,selected,unassigned=_projection(obj['answers'],details,spans,text,ref['content_revision_sha256'])
     request={'schema_version':'aic-existing-evidence-projection-v1','submission_id':submission_id,
              'source':item['source'],'contract_sha256':item['contract_sha256'],
              'annotation':annotation,'selected_span_indexes':selected,'unassigned_span_indexes':unassigned,
              'annotation_changes':[], 'basis':'Existing submitted supplemental targets only; no new evidence meaning assigned'}
+    if changes:
+        request.update(schema_version='aic-existing-evidence-projection-v2',annotation_changes=changes,
+                       basis='Existing submitted targets and exact saved highlights; reversible quote encoding repair only')
     ident='projection-'+document_hash(request)
     path=Path(root)/'evidence-projections'/ident
     if path.exists():
@@ -153,7 +193,7 @@ field. It never assigns a target or attribution to an unassigned highlight.
         receipt={'request':request,'draft_id':draft_id,'state':'validated_draft_not_approved'}
         publish_directory(path,{'receipt.json':encoded(receipt)})
     return {'draft_id':receipt['draft_id'],'projection_id':ident,'state':receipt['state'],
-            'annotation_changes':[],'selected_span_indexes':selected,'unassigned_span_indexes':unassigned,
+            'annotation_changes':changes,'selected_span_indexes':selected,'unassigned_span_indexes':unassigned,
             'review_command':'python -m src.global_review review '+receipt['draft_id']}
 
 
@@ -163,6 +203,8 @@ def main():
     commands=parser.add_subparsers(dest='command',required=True)
     projected=commands.add_parser('stage-existing')
     projected.add_argument('submission_id')
+    projected.add_argument('--repair-quote-encoding',action='store_true',
+                           help='Opt in to audited reversal of an exact UTF-8-as-CP1252 quote transcription; never changes targets or offsets')
     template=commands.add_parser('template')
     template.add_argument('--scope-note',required=True)
     template.add_argument('--output',type=Path,required=True)
@@ -177,7 +219,7 @@ def main():
     args=parser.parse_args()
     try:
         if args.command=='stage-existing':
-            result=stage_existing_evidence(args.root,args.submission_id)
+            result=stage_existing_evidence(args.root,args.submission_id,repair_encoding=args.repair_quote_encoding)
         elif args.command=='template':
             details=article_template(args.scope_note)
             publish_directory(args.output,{'details.json':encoded(details)})
