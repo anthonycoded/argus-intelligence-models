@@ -1,0 +1,5 @@
+# Independent experimental API; no Argilla dependency and no model installation.
+-r requirements.txt
+fastapi==0.165.0
+uvicorn==0.38.0
+httpx==0.28.1

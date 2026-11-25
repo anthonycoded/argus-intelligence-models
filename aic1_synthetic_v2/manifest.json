@@ -1,0 +1,27 @@
+{
+  "dataset_id": "aic1_synthetic_v2",
+  "version": "2.0",
+  "synthetic": true,
+  "total_records": 160,
+  "unique_scenarios": 80,
+  "grouped_pairs_per_scenario": 2,
+  "label_distribution": {
+    "nondefense": 80,
+    "defense": 80
+  },
+  "split_counts": {
+    "train": 56,
+    "validation": 12,
+    "test": 12
+  },
+  "split_record_counts": {
+    "train": 112,
+    "validation": 24,
+    "test": 24
+  },
+  "hard_negative_scenarios": 33,
+  "hard_positive_scenarios": 9,
+  "generator": "ChatGPT-authored fictional scenarios with deterministic variant formatting",
+  "seed": 20261124,
+  "rights_status": "synthetic_educational_only_not_production_rights_clearance"
+}

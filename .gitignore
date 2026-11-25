@@ -34,6 +34,7 @@ __pycache__/
 models/
 checkpoints/
 data/educational_runs/
+data/inference/
 data/labeled/*.jsonl
 data/splits/*.jsonl
 *.log
